@@ -1,0 +1,518 @@
+---
+title: "Who leaves, and why? People analytics in R"
+author: "Rita Moreira"
+date: "`r format(Sys.Date(), '%B %Y')`"
+params:
+  csv: "ibm_attrition.csv"
+output:
+  html_document:
+    theme: default
+    highlight: tango
+    toc: true
+    toc_float:
+      collapsed: false
+    toc_depth: 2
+    code_folding: hide
+    self_contained: true
+    df_print: kable
+---
+
+<!--
+Render (from the site root):
+  Rscript -e "rmarkdown::render('analysis/people_attrition.Rmd',
+                params = list(csv = 'path/to/ibm_attrition.csv'),
+                output_dir = 'reports', envir = new.env())"
+The analysis code is not duplicated here: knitr::read_chunk() pulls the labelled
+chunks from analysis/people_attrition.R, the same script that builds data/attrition.js.
+-->
+
+```{css, echo = FALSE}
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+       font-size: 16px; line-height: 1.6; color: #0b0b0b; background: #fcfcfb; }
+.main-container { max-width: 980px; }
+h1.title { font-weight: 700; font-size: 2.1em; margin-top: 1.2em; }
+h4.author, h4.date { color: #52514e; font-weight: 400; font-size: 1em; margin: 0.2em 0; }
+h1, h2, h3 { font-weight: 650; color: #0b0b0b; }
+h2 { margin-top: 2em; padding-top: 0.6em; border-top: 1px solid #e6e5e0; }
+a { color: #1c5cab; }
+.lead-note { border-left: 4px solid #2a78d6; background: rgba(42,120,214,0.06); padding: 0.8em 1em; margin: 1.2em 0; }
+.caveat { border-left: 4px solid #8a8984; background: #f3f2ee; padding: 0.7em 1em; margin: 1em 0; font-size: 0.95em; }
+.finding { margin: 0.5em 0 0.9em 0; }
+.finding b { display: block; }
+table { font-size: 0.92em; }
+.table { width: auto; }
+.table > thead > tr > th { border-bottom: 2px solid #c9c8c2; color: #52514e; font-weight: 600; }
+pre, code { font-size: 0.86em; }
+.btn-default { color: #1c5cab; border-color: #c9c8c2; }
+#TOC { font-size: 0.92em; }
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover { background-color: #2a78d6; border-color: #2a78d6; }
+```
+
+```{r knit-setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = "center",
+                      fig.width = 8, fig.height = 4.6, dpi = 110, fig.retina = 2,
+                      dev = "png", dev.args = if (capabilities("cairo")) list(type = "cairo-png") else list())
+SRC <- params$csv                      # the analysis script sees SRC and skips argument parsing
+knitr::read_chunk("people_attrition.R")
+```
+
+
+
+```{r plot-theme, echo = FALSE}
+library(ggplot2)
+ink <- "#0b0b0b"; ink2 <- "#52514e"; muted <- "#9a9893"; grid_col <- "#e6e5e0"
+blue <- "#2a78d6"; orange <- "#eb6834"; aqua <- "#1baf7a"   # categorical slots 1-3
+theme_set(theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major = element_line(colour = grid_col, linewidth = 0.4),
+        axis.text = element_text(colour = ink2), axis.title = element_text(colour = ink2),
+        plot.title = element_text(colour = ink, face = "bold", size = 13),
+        plot.subtitle = element_text(colour = ink2), plot.title.position = "plot",
+        strip.text = element_text(colour = ink, face = "bold", hjust = 0),
+        legend.position = "top", legend.justification = "left",
+        legend.title = element_blank(), legend.text = element_text(colour = ink2)))
+pct_axis <- scales::label_percent(accuracy = 1)
+```
+
+<div class="lead-note">
+**About the data.** This report uses IBM's *HR Analytics Employee Attrition* sample:
+1,470 **fictional** employees created by IBM data scientists. No real company or person
+is described. I use it to show the method end to end in R; the numbers illustrate, they
+do not describe a real workforce. All code is folded under the **Code** buttons, and the
+same script produces the data behind the interactive version on my site.
+</div>
+
+```{r compute, echo = FALSE, ref.label = c("setup", "load", "segments", "model-data", "split", "logit", "validation", "survival", "survival-naive", "cox", "tree", "whatif", "insights")}
+```
+
+## Key findings
+
+```{r key-findings, results = "asis", echo = FALSE}
+for (i in insights) cat(sprintf('<div class="finding"><b>%s</b>%s</div>\n', i$title, i$text))
+```
+
+## 1. The question and the data
+
+Every exit costs a company twice: the work that stops while the seat is empty, and the
+hiring and ramp-up of the replacement. HR leadership rarely has budget to fix everything,
+so the useful question is narrower: **who leaves, when, and where would retention effort
+pay off?**
+
+The file has one row per employee: demographics, role and level, pay, tenure, travel,
+overtime, four satisfaction ratings, and whether the person left (`Attrition`).
+`r num(n_emp)` employees, `r num(n_left)` leavers: an attrition rate of
+**`r pct(overall_rate, 1)`**. Three columns (`EmployeeCount`, `Over18`,
+`StandardHours`) hold one value for everyone and are dropped. There are no missing values.
+
+```{r show-load, ref.label = c("setup", "load"), eval = FALSE}
+```
+
+I look at the question through five lenses, each answering a different part of it:
+
+| Lens | Question it answers | R tools |
+|---|---|---|
+| Segment rates + chi-square | Which groups leave more? | `dplyr`, `chisq.test` |
+| Logistic regression | Which factors matter once the others are held constant? | `glm`, `broom` |
+| Hold-out validation | Can we rank people by risk, and how well? | rank-based AUC, calibration |
+| Survival analysis | *When* in their tenure do people leave? | `survival::survfit`, `coxph` |
+| Decision tree | Which combinations of traits define high-risk pockets? | `rpart` |
+
+A what-if on top of the regression then asks how many exits overtime might account for.
+
+## 2. Who leaves? Attrition by segment
+
+Each variable is cut into groups and tested with a chi-square test. Cramér's V puts
+the strength of association on a 0-1 scale that is comparable across variables with
+different numbers of groups.
+
+```{r show-segments, ref.label = "segments", eval = FALSE}
+```
+
+```{r fig-segments, fig.height = 10}
+seg_plot <- bind_rows(lapply(segments[1:8], function(s) {
+  lv <- s$levels
+  if (s$kind == "nominal") lv <- lv[order(lv$rate), ] else lv <- lv[rev(seq_len(nrow(lv))), ]
+  data.frame(panel = sprintf("%s  (V = %.2f)", s$label, s$cramers_v),
+             key = paste(s$key, lv$level, sep = "___"), lv)
+}))
+seg_plot$key   <- factor(seg_plot$key, levels = unique(seg_plot$key))
+seg_plot$panel <- factor(seg_plot$panel, levels = unique(seg_plot$panel))
+seg_plot$above <- ifelse(seg_plot$rate > overall_rate, "Above company average", "At or below average")
+
+ggplot(seg_plot, aes(x = rate, y = key, fill = above)) +
+  geom_col(width = 0.68) +
+  geom_errorbar(aes(xmin = ci_low, xmax = ci_high), width = 0, orientation = "y", colour = ink2, linewidth = 0.4) +
+  geom_vline(xintercept = overall_rate, linetype = "dashed", colour = ink, linewidth = 0.4) +
+  facet_wrap(~ panel, ncol = 2, scales = "free_y") +
+  scale_y_discrete(labels = function(x) sub(".*___", "", x)) +
+  scale_x_continuous(labels = pct_axis, expand = expansion(mult = c(0, 0.05))) +
+  scale_fill_manual(values = c("Above company average" = blue, "At or below average" = "#c9c8c2")) +
+  labs(title = "Attrition rate by group, the eight strongest variables",
+       subtitle = sprintf("Bars: share who left, with 95%% Wilson intervals. Dashed line: company average (%s).",
+                          pct(overall_rate, 1)),
+       x = NULL, y = NULL)
+```
+
+```{r tab-tests}
+seg_tests %>%
+  transmute(Variable = variable, `Chi-square` = round(chi2, 1), df,
+            `p-value` = ifelse(p_value < 0.001, "< 0.001", sprintf("%.3f", p_value)),
+            `Cramér's V` = round(cramers_v, 2)) %>%
+  knitr::kable(align = "lrrrr")
+```
+
+All `r nrow(seg_tests)` variables differ significantly at the 5% level, which is
+expected with 1,470 people. Effect size is the better guide, and the ranking is clear:
+**overtime**, **job role**, **tenure**, **job level**, **age** and **pay** lead. Many of
+these overlap: junior people are younger, newer and paid less. The regression
+below separates them.
+
+## 3. What predicts leaving, all else equal?
+
+A logistic regression estimates each factor's effect while holding the others constant.
+I chose an interpretable set of `r length(predictors)` predictors and left out
+near-duplicates: monthly income tracks job level (r = 0.95), and years in role or with
+the current manager track years at company (r ≈ 0.77). Gender is excluded on purpose.
+Age and marital status stay in only as controls, so the effects of the levers HR can
+act on are not confounded by them.
+
+```{r show-logit, ref.label = c("model-data", "logit"), eval = FALSE}
+```
+
+```{r fig-or, fig.height = 5.8}
+or_plot <- or_tab %>%
+  mutate(label = factor(label, levels = rev(label)),
+         sig = ifelse(significant, "Significant (p < 0.05)", "Not significant"))
+ggplot(or_plot, aes(x = odds_ratio, y = label, colour = sig)) +
+  geom_vline(xintercept = 1, colour = ink2, linewidth = 0.4) +
+  geom_errorbar(aes(xmin = ci_low, xmax = ci_high), width = 0, orientation = "y", linewidth = 0.7) +
+  geom_point(size = 2.6) +
+  scale_x_log10(breaks = c(0.5, 1, 2, 4, 8)) +
+  scale_colour_manual(values = c("Significant (p < 0.05)" = blue, "Not significant" = muted)) +
+  labs(title = "Odds ratios from the logistic regression (all employees)",
+       subtitle = "Right of 1 = higher odds of leaving. Lines: 95% profile-likelihood intervals. Log scale.",
+       x = "Odds ratio", y = NULL)
+```
+
+```{r tab-or}
+or_tab %>%
+  transmute(Factor = label, `Odds ratio` = sprintf("%.2f", odds_ratio),
+            `95% CI` = sprintf("%.2f to %.2f", ci_low, ci_high),
+            `p-value` = ifelse(p_value < 0.001, "< 0.001", sprintf("%.3f", p_value))) %>%
+  knitr::kable(align = "lrrr")
+```
+
+How to read it: **working overtime multiplies the odds of leaving by
+`r sprintf("%.1f", or_tab$odds_ratio[or_tab$term == "Overtime"])`**, for two people who are
+otherwise alike. Job level 1, low job involvement, poor work-life balance, working in Sales,
+low environment satisfaction, having no stock options, frequent travel and low job
+satisfaction all at least double the odds. Distance from home, the number of prior employers
+and years since the last promotion add smaller amounts per unit; older age and longer tenure
+lower the odds. Being single is no longer significant once stock options are in the model.
+That is expected here: single employees in this sample *all* have stock-option level 0, so
+the two effects share the same people and should be read together. Odds ratios also
+overstate *risk* ratios when the outcome is common, so "5.9 times the odds" is not "5.9
+times as likely".
+
+## 4. How well can risk be ranked?
+
+The same model was fitted on a 70% training split (stratified on the outcome,
+`set.seed(2026)`) and scored on the `r num(nrow(test))` people it had never seen.
+
+```{r show-validation, ref.label = c("split", "validation"), eval = FALSE}
+```
+
+* **AUC `r sprintf("%.2f", auc_test)`** on the hold-out (training `r sprintf("%.2f", auc_train)`;
+  the small gap means little overfitting). Overtime alone reaches `r sprintf("%.2f", auc_ot_only)`.
+  AUC is computed with the rank (Mann-Whitney) formula: the chance that a random leaver is
+  scored above a random stayer.
+* **Brier score `r sprintf("%.3f", brier)`** (mean squared error of the probabilities).
+
+```{r fig-calib, fig.width = 4.6, fig.height = 4.2, fig.show = "hold", out.width = "49%"}
+ggplot(calib, aes(mean_predicted, actual_rate)) +
+  geom_abline(slope = 1, intercept = 0, colour = muted, linetype = "dashed") +
+  geom_line(colour = blue, linewidth = 0.7) +
+  geom_point(colour = blue, size = 2.4) +
+  scale_x_continuous(labels = pct_axis, limits = c(0, 1)) +
+  scale_y_continuous(labels = pct_axis, limits = c(0, 1)) +
+  labs(title = "Calibration by risk decile", subtitle = "Hold-out set; dashed = perfect calibration",
+       x = "Predicted attrition", y = "Actual attrition")
+
+ggplot(bind_rows(data.frame(share_flagged = 0, share_of_leavers = 0), gains),
+       aes(share_flagged, share_of_leavers)) +
+  geom_abline(slope = 1, intercept = 0, colour = muted, linetype = "dashed") +
+  geom_line(colour = blue, linewidth = 0.7) +
+  geom_point(data = filter(gains, abs(share_flagged - TOP_SHARE) < 1e-9), colour = orange, size = 3) +
+  scale_x_continuous(labels = pct_axis) + scale_y_continuous(labels = pct_axis) +
+  coord_cartesian(xlim = c(0, 1), ylim = c(0, 1)) +
+  labs(title = "Leavers caught vs share flagged", subtitle = "Dashed = random flagging; dot = top 20%",
+       x = "Share of employees flagged (riskiest first)", y = "Share of leavers caught")
+```
+
+The model ranks well but is not perfectly calibrated: the riskiest decile is
+under-predicted and deciles 6-8 are over-predicted, about what one expects from
+`r sum(test$left)` hold-out leavers. If HR flagged the **riskiest 20%** of the hold-out
+group (predicted probability ≥ `r sprintf("%.2f", cm$threshold)`):
+
+```{r tab-cm}
+data.frame(` ` = c("Flagged (top 20%)", "Not flagged"),
+           `Actually left` = c(cm$tp, cm$fn), `Stayed` = c(cm$fp, cm$tn), check.names = FALSE) %>%
+  knitr::kable(align = "lrr")
+```
+
+That list would contain **`r pct(cm$recall)` of the people who left**, and
+**`r pct(cm$precision)` of the people on it would actually leave**, `r sprintf("%.1f", cm$lift)` times
+the `r pct(cm$base_rate)` base rate. Useful for prioritising conversations; far too
+uncertain to justify any decision about an individual.
+
+## 5. When do people leave?
+
+**A trap first.** The textbook Kaplan-Meier curve (time = years at company, stayers censored)
+assumes we saw everyone's whole tenure. This file is a snapshot: it lists people who were
+employed during one period and flags who left during it. People who left in earlier years
+are not in it. The textbook curve still places every long-tenured stayer in the
+first-year risk set, though nobody could have seen them leave in their first year a decade
+ago. The result is a curve that hides early exits: it puts first-year retention at
+**`r pct(ret_at(km_naive$overall, 1), 1)`**, while
+**`r pct(exit_by_tenure$overall$rate[1])`** of the first-year employees in the file left.
+
+**The fix is delayed entry** (left truncation). I assume `Attrition` covers one year (the
+usual reading of this dataset), so someone with *k* completed years was at risk only
+between tenure *k* and *k* + 1: `Surv(start = k, stop = k + 1, event)`. The curve then reads
+as a synthetic cohort: *if this year's exit rates at each tenure held, what share of new
+hires would still be here after t years?* The raw exit rate in each tenure year comes first,
+because it needs no model at all.
+
+```{r show-survival, ref.label = c("survival", "survival-naive"), eval = FALSE}
+```
+
+```{r fig-hazard, fig.height = 3.8}
+ggplot(exit_by_tenure$overall, aes(x = factor(label, levels = label), y = rate)) +
+  geom_col(fill = blue, width = 0.7) +
+  geom_hline(yintercept = overall_rate, linetype = "dashed", colour = ink, linewidth = 0.4) +
+  geom_text(aes(label = pct(rate)), vjust = -0.4, size = 3.3, colour = ink2) +
+  scale_y_continuous(labels = pct_axis, expand = expansion(mult = c(0, 0.12))) +
+  labs(title = "Exit rate by tenure year", subtitle = "Share of employees in each year of tenure who left. Dashed: company average.",
+       x = "Year of tenure (1 = first year)", y = NULL)
+```
+
+```{r km-helpers}
+HORIZON <- 10
+km_frame <- function(groups) bind_rows(lapply(groups, function(g) data.frame(group = g$group, g$curve))) %>%
+  filter(time <= HORIZON)
+km_plot <- function(df, colours, title, subtitle) {
+  rects <- df %>% group_by(group) %>% arrange(time, .by_group = TRUE) %>%
+    mutate(xmax = lead(time, default = HORIZON)) %>% filter(time < HORIZON) %>% ungroup()
+  ggplot(df, aes(time, surv, colour = group)) +
+    geom_rect(data = rects, aes(xmin = time, xmax = xmax, ymin = lower, ymax = upper, fill = group),
+              inherit.aes = FALSE, alpha = 0.12) +
+    geom_step(linewidth = 0.8) +
+    scale_colour_manual(values = colours) + scale_fill_manual(values = colours, guide = "none") +
+    scale_x_continuous(breaks = 0:HORIZON) +
+    scale_y_continuous(labels = pct_axis, limits = c(0, 1)) +
+    labs(title = title, subtitle = subtitle, x = "Years since joining", y = "Still employed")
+}
+```
+
+```{r fig-km-ot}
+km_plot(km_frame(km$by_overtime$groups), c(No = blue, Yes = orange),
+        "Retention curve by overtime (Kaplan-Meier, delayed entry)",
+        sprintf("Shaded: 95%% CI. Log-rank (score test) p %s.", fmt_p(km$by_overtime$logrank$p_value))) +
+  labs(colour = "Overtime") + theme(legend.title = element_text(colour = ink2))
+```
+
+```{r fig-km-jl}
+jl_cols <- setNames(c(blue, orange, aqua), levels(surv_df$JobLevel))
+km_plot(km_frame(km$by_job_level$groups), jl_cols,
+        "Retention curve by job level (Kaplan-Meier, delayed entry)",
+        sprintf("Levels 3-5 pooled. Log-rank (score test) p %s.", fmt_p(km$by_job_level$logrank$p_value)))
+```
+
+```{r tab-retention}
+ret_rows <- function(g) data.frame(Group = g$group, People = g$n, Leavers = g$events,
+  t(setNames(ifelse(g$retention$reliable, pct(g$retention$surv), paste0(pct(g$retention$surv), "*")),
+             paste("After", g$retention$year, ifelse(g$retention$year == 1, "year", "years")))),
+  check.names = FALSE)
+bind_rows(ret_rows(km$overall), lapply(km$by_overtime$groups, ret_rows), lapply(km$by_job_level$groups, ret_rows)) %>%
+  mutate(Group = c("All employees", paste("Overtime:", c("No", "Yes")), levels(surv_df$JobLevel))) %>%
+  knitr::kable(align = "lrrrrrr")
+```
+
+`*` fewer than `r KM_MIN_RISK` people stood behind at least one step of that estimate
+(only `r sum(surv_df$JobLevel == levels(surv_df$JobLevel)[3] & surv_df$YearsAtCompany == 0)`
+people at levels 3-5 were in their first year), so it is not reliable.
+
+The picture is consistent: **exits concentrate in the first two years**
+(`r pct(t01$rate)` of employees in their first two years left, against
+`r pct(t59$rate)` at 5-9 years), and **overtime workers leave sooner at every stage**.
+Median time to exit for a synthetic new-hire cohort is
+`r km$by_overtime$groups[[2]]$median_years` year for overtime workers and
+`r km$by_overtime$groups[[1]]$median_years` years for everyone else. Compounding is what
+makes these numbers look harsh: a 30% annual exit rate leaves fewer than 3% of a cohort after
+ten years. They describe today's exit rates projected forward, not a real cohort.
+
+```{r fig-naive, fig.height = 3.9}
+cmp <- bind_rows(
+  data.frame(version = "Textbook (no delayed entry)", km_naive$overall$curve),
+  data.frame(version = "Delayed entry (used here)", km$overall$curve)) %>%
+  filter(time <= HORIZON)
+ggplot(cmp, aes(time, surv, colour = version)) +
+  geom_step(linewidth = 0.8) +
+  scale_colour_manual(values = c("Textbook (no delayed entry)" = muted, "Delayed entry (used here)" = blue)) +
+  scale_x_continuous(breaks = 0:HORIZON) + scale_y_continuous(labels = pct_axis, limits = c(0, 1)) +
+  labs(title = "Same data, two retention curves", subtitle = "All employees. The textbook curve ignores that early leavers from past years are missing.",
+       x = "Years since joining", y = "Still employed")
+```
+
+**Cox model.** A Cox proportional-hazards model with the same delayed entry asks which traits
+make people leave *sooner at the same tenure*. The textbook version is shown for contrast:
+without delayed entry, traits tied to short tenure (job level 1) look about twice as strong
+as they are.
+
+```{r show-cox, ref.label = "cox", eval = FALSE}
+```
+
+```{r fig-cox, fig.height = 4.2}
+cox_plot <- cox_tab %>% left_join(cox_naive_tab, by = "term") %>%
+  mutate(label = factor(label, levels = rev(label)))
+ggplot(cox_plot, aes(y = label)) +
+  geom_vline(xintercept = 1, colour = ink2, linewidth = 0.4) +
+  geom_errorbar(aes(xmin = ci_low, xmax = ci_high), width = 0, orientation = "y", colour = blue, linewidth = 0.7) +
+  geom_point(aes(x = hazard_ratio, shape = "Delayed entry (used here)"), colour = blue, size = 2.6) +
+  geom_point(aes(x = hazard_ratio_naive, shape = "Textbook (biased)"), colour = ink2, size = 2.4) +
+  scale_shape_manual(values = c("Delayed entry (used here)" = 16, "Textbook (biased)" = 1)) +
+  scale_x_log10(breaks = c(0.5, 1, 2, 4, 8)) +
+  labs(title = "Hazard ratios from the Cox model",
+       subtitle = sprintf("Right of 1 = leaves sooner. Concordance %.2f; proportional-hazards test p = %.2f.",
+                          cox_fit$concordance["concordance"], cox_zph$table["GLOBAL", "p"]),
+       x = "Hazard ratio (log scale)", y = NULL)
+```
+
+The proportional-hazards assumption holds (global test p =
+`r sprintf("%.2f", cox_zph$table["GLOBAL", "p"])`). Overtime has the largest effect
+(**HR `r sprintf("%.1f", cox_tab$hazard_ratio[cox_tab$term == "Overtime"])`**), followed by
+job level 1, low environment satisfaction and having no stock options.
+
+## 6. Which segments are most at risk?
+
+A decision tree finds combinations of traits with very different attrition rates. I grew a
+regression tree on the 0/1 outcome (`rpart`, `method = "anova"`), so each leaf's mean *is*
+its attrition rate, with at least 30 people per leaf, depth ≤ 4 and cp = 0.01 (ten-fold
+cross-validated error falls at every retained split). A classification tree is the
+usual choice, but on a 16% outcome it refuses to split the large low-risk branch, because
+no split there changes the majority vote.
+
+```{r show-tree, ref.label = "tree", eval = FALSE}
+```
+
+```{r tab-tree}
+tree_leaves %>%
+  transmute(Segment = rule, People = n, Leavers = leavers, `Attrition rate` = pct(rate),
+            `vs average` = sprintf("%.1f×", lift), `Share of all leavers` = pct(share_of_leavers)) %>%
+  knitr::kable(align = "lrrrrr")
+```
+
+Two pockets stand out: **overtime workers on the lowest pay** (`r pct(tree_leaves$rate[1])`
+leave) and **overtime workers in lab, sales-executive and sales-rep roles with no stock
+options** (`r pct(tree_leaves$rate[2])`). Together they are
+`r pct(sum(tree_leaves$n[1:2]) / n_emp)` of employees but
+`r pct(sum(tree_leaves$leavers[1:2]) / n_left)` of leavers. Without overtime, early-career
+people (≤ 2 years of total experience) are the one high-risk group.
+
+## 7. What if overtime were reduced?
+
+Using the full-data logistic model, I take each of the `r num(n_ot)` overtime workers and
+compare their predicted probability of leaving with the same person's prediction with
+`Overtime` set to "No". Summing those differences gives the expected number of exits
+associated with overtime. "Random" moves a share of overtime workers off overtime at random;
+"targeted" starts with the people whose predicted risk falls the most.
+
+```{r show-whatif, ref.label = "whatif", eval = FALSE}
+```
+
+```{r fig-whatif, fig.height = 4}
+wi <- bind_rows(
+  data.frame(scenario = "Random", share = scenarios$share, leavers = scenarios$expected_leavers_random),
+  data.frame(scenario = "Targeted (largest drop first)", share = scenarios$share, leavers = scenarios$expected_leavers_targeted))
+ggplot(wi, aes(share, leavers, colour = scenario)) +
+  geom_line(linewidth = 0.8) + geom_point(size = 2.4) +
+  scale_colour_manual(values = c("Random" = blue, "Targeted (largest drop first)" = orange)) +
+  scale_x_continuous(labels = pct_axis, breaks = OT_SHARES) +
+  scale_y_continuous(limits = c(0, NA)) +
+  labs(title = "Expected leavers if overtime were removed for a share of overtime workers",
+       subtitle = sprintf("Model-based, associational. Today: %s observed leavers.", num(n_left)),
+       x = "Share of overtime workers moved off overtime", y = "Expected leavers")
+```
+
+```{r tab-whatif}
+scenarios %>%
+  transmute(`Share moved off overtime` = pct(share), `Workers` = workers_moved,
+            `Expected leavers (random)` = sprintf("%.0f", expected_leavers_random),
+            `Expected leavers (targeted)` = sprintf("%.0f", expected_leavers_targeted),
+            `Attrition rate (targeted)` = pct(attrition_rate_targeted, 1)) %>%
+  knitr::kable(align = "rrrrr")
+```
+
+Removing overtime altogether is associated with about **`r num(all_ot$reduction_random)` fewer
+leavers** (`r num(base_expected)` → `r num(all_ot$expected_leavers_random)`). Targeting gets
+most of that from half the workers: **`r num(half_ot$reduction_targeted)` fewer** when the
+`r num(half_ot$workers_moved)` people whose predicted risk falls most come off overtime first.
+The raw rate gap gives `r num(naive_reduction)`; the adjusted model lands close to it, so
+the overtime effect is not explained away by who works overtime.
+
+**On cost, I make no claim.** Replacement-cost estimates vary widely by role and company. The
+leavers in this file earn on average `r num(cost_inputs$avg_monthly_income_leavers)` a month
+(median `r num(cost_inputs$median_monthly_income_leavers)`, in the dataset's own units), and the
+exits avoided in the full scenario belong to people earning about
+`r num(cost_inputs$avg_monthly_income_avoided)` a month. If replacing someone costs *m* times
+their annual pay, the full scenario is worth about
+`r num(all_ot$reduction_random)` × 12 × `r num(cost_inputs$avg_monthly_income_avoided)` × *m*.
+The interactive version on the site lets the reader set *m*, and set it against the cost of
+the extra hiring that cutting overtime would need.
+
+## 8. Recommendations: hypotheses for HR to test
+
+None of these is proven by this analysis. Each is a hypothesis the data makes worth testing,
+with a way to test it.
+
+```{r recs, results = "asis", echo = FALSE}
+for (k in seq_along(recommendations)) {
+  r <- recommendations[[k]]
+  cat(sprintf("**%d. %s**\n\n", k, r$title))
+  cat(sprintf("* *Hypothesis:* %s\n* *Action:* %s\n* *Measure:* %s\n* *Evidence here:* %s\n\n",
+              r$hypothesis, r$action, r$measure, r$evidence))
+}
+```
+
+## 9. Caveats
+
+```{r caveats, results = "asis", echo = FALSE}
+cat(paste0("* ", caveats, collapse = "\n"), "\n")
+```
+
+## Reproduce
+
+The analysis lives in one script; this report reads its chunks, so the numbers here and
+on the site come from the same code.
+
+```
+Rscript analysis/people_attrition.R <ibm_attrition.csv> data
+Rscript -e "rmarkdown::render('analysis/people_attrition.Rmd', params = list(csv = '<ibm_attrition.csv>'), output_dir = 'reports')"
+```
+
+The key findings and recommendations above are assembled from the computed numbers, not
+typed in by hand:
+
+```{r show-insights, ref.label = "insights", eval = FALSE}
+```
+
+The export step (it writes `data/attrition.js` and is not run while knitting):
+
+```{r export, eval = FALSE}
+```
+
+```{r session}
+pkgs <- c("dplyr", "survival", "broom", "rpart", "jsonlite", "ggplot2", "rmarkdown", "knitr")
+cat(R.version.string, "\n")
+cat(paste(pkgs, vapply(pkgs, function(p) as.character(packageVersion(p)), ""), collapse = " | "), "\n")
+```

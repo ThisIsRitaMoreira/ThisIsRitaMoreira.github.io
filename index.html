@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rita Moreira · Business Analyst</title>
+<meta name="description" content="Rita Moreira, data and business analyst. Four capsules, four industries: people analytics, retail operations, airlines and data platforms, fleet safety and big data. Interactive case studies built with SQL, Python, R, Power BI and more.">
+<meta property="og:title" content="Rita Moreira · Business Analyst">
+<meta property="og:description" content="Fluent in four languages, and in data. Four interactive case studies across HR, retail, airlines and trucking.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F3F7FC">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 36'><path d='M0 16a16 16 0 0 1 32 0v16a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4z' fill='%232F5FA7'/><text x='16' y='28' font-family='Georgia,serif' font-size='20' fill='white' text-anchor='middle'>R</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<script>
+  try { const t = localStorage.getItem("rm-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<!-- the azulejo tile, used as a soft pattern across the site -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="tile-motif">
+      <path d="M0 0H72V72H0Z" stroke-width=".7" opacity=".55"/>
+      <path d="M36 7L65 36L36 65L7 36Z"/>
+      <circle cx="36" cy="36" r="8.5"/>
+      <circle cx="36" cy="36" r="2.6"/>
+      <ellipse cx="36" cy="19.5" rx="4.6" ry="8.5"/><ellipse cx="36" cy="52.5" rx="4.6" ry="8.5"/>
+      <ellipse cx="19.5" cy="36" rx="8.5" ry="4.6"/><ellipse cx="52.5" cy="36" rx="8.5" ry="4.6"/>
+      <path d="M0 15A15 15 0 0 0 15 0M57 0A15 15 0 0 0 72 15M72 57A15 15 0 0 0 57 72M15 72A15 15 0 0 0 0 57"/>
+      <path d="M0 7A7 7 0 0 0 7 0M65 0A7 7 0 0 0 72 7M72 65A7 7 0 0 0 65 72M7 72A7 7 0 0 0 0 65"/>
+    </g>
+    <pattern id="azulejo" width="72" height="72" patternUnits="userSpaceOnUse">
+      <use href="#tile-motif" style="fill:none;stroke:var(--tile-ink);stroke-width:1.3"/>
+    </pattern>
+    <pattern id="azulejo-tint" width="72" height="72" patternUnits="userSpaceOnUse">
+      <use href="#tile-motif" style="fill:none;stroke:#ffffff;stroke-width:1.5;opacity:.8"/>
+    </pattern>
+  </defs>
+</svg>
+<div class="progress" id="progress"></div>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#/" aria-label="Rita Moreira, home">
+      <span class="brand-mark">R</span><span class="brand-name">Rita Moreira</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#/capsules">Capsules</a></li>
+      <li><a href="#/toolkit">Toolkit</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href="#/contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch light or dark theme" title="Theme">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+      <a class="btn btn-sm btn-primary" href="Rita-Moreira-Resume.pdf" download>Resume</a>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#/capsules">Capsules</a>
+  <a href="#/people">· People analytics</a>
+  <a href="#/retail">· Retail &amp; grocery operations</a>
+  <a href="#/airline">· Airlines &amp; data platforms</a>
+  <a href="#/fleet">· Fleet safety &amp; big data</a>
+  <a href="#/toolkit">Toolkit</a>
+  <a href="#/about">About</a>
+  <a href="Rita-Moreira-Resume.pdf" download>Resume (PDF)</a>
+  <a href="#/contact">Contact</a>
+</div>
+
+<main>
+<!-- =================================================================== HOME -->
+<div class="view" data-view="home">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="pill-status"><span class="live-dot"></span>Open to roles anywhere in the US</span>
+        <p class="hello">Hi, I'm Rita.</p>
+        <h1>Fluent in four languages, <em>and in data.</em></h1>
+        <p class="hero-sub">I'm a business analyst from Porto, Portugal. I've worked with HR data at <strong>ALTEN</strong> and store data at <strong>Intermarché</strong>, and I'm now finishing an <strong>MS in Business Analytics &amp; AI at UT Dallas</strong>, where I'm also a graduate teaching assistant and help fellow students at the Career Center.</p>
+        <p class="hero-sub">My favorite part of the job is the translation: from a business question to the right data, and from the data back to a decision someone can act on.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#/capsules">Explore my work ↓</a>
+          <a class="btn" href="Rita-Moreira-Resume.pdf" download>Download resume</a>
+        </div>
+        <div class="facts">
+          <span class="fact"><b>4</b> industries</span>
+          <span class="fact">PT · EN · FR · ES</span>
+          <span class="fact">SQL · Python · R · Power BI</span>
+        </div>
+      </div>
+      <div class="hero-tiles" aria-label="Preview of the four capsules">
+        <a class="htile" data-tint="people" href="#/people"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="htile-k">People analytics</span><b>−15%</b><span class="htile-l">repeat HR tickets</span><span class="htile-go">Open →</span></a>
+        <a class="htile" data-tint="retail" href="#/retail"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="htile-k">Retail operations</span><b>13,020</b><span class="htile-l">SKUs audited</span><span class="htile-go">Open →</span></a>
+        <a class="htile" data-tint="airline" href="#/airline"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="htile-k">Airlines</span><b>324K</b><span class="htile-l">real flights analyzed</span><span class="htile-go">Open →</span></a>
+        <a class="htile" data-tint="fleet" href="#/fleet"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="htile-k">Fleet safety</span><b>7 → 4</b><span class="htile-l">drivers truly high-risk</span><span class="htile-go">Open →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How I work</span>
+        <h2>Different industries, <em>one way of working.</em></h2>
+        <p>HR, supermarkets, airlines, trucking. The data changes from one to the next, but the questions I ask stay the same.</p>
+      </div>
+      <div class="method">
+        <div class="mstep reveal"><h3>Start from the decision</h3><p>Who will use this, and what will they do differently because of it?</p></div>
+        <div class="mstep reveal"><h3>Get the data right</h3><p>Clean it, reconcile it, and say clearly what's real and what's assumed.</p></div>
+        <div class="mstep reveal"><h3>Find the pattern</h3><p>SQL, Python, R or a BI tool: whatever the question needs, no more.</p></div>
+        <div class="mstep reveal"><h3>Translate it</h3><p>A dashboard, a short list or a recommendation someone can use on Monday.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="capsules" style="padding-top:40px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">My work</span>
+        <h2>Four capsules, <em>four industries.</em></h2>
+        <p>Each capsule is a short case study: the business problem, the data, analysis you can explore yourself, and what I'd recommend. Two grow out of my jobs, rebuilt on public data because company data stays with the company. Two grow out of my MS projects.</p>
+      </div>
+      <div class="capsules">
+        <a class="capsule-card reveal" href="#/people" data-tint="people">
+          <div class="cc-head"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="cc-num">No. 01</span><span class="cc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 13.6c2.3.2 4 1.8 4.6 4.4"/></svg></span></div>
+          <div class="cc-body">
+            <span class="cc-kicker">Capsule 01 · HR operations at ALTEN</span>
+            <h3 class="cc-title">People analytics</h3>
+            <p class="cc-q">Why do HR tickets come back, and which employees are most likely to leave?</p>
+            <div class="cc-stats"><div class="cc-stat"><b>~3,000</b><span>HR tickets a month</span></div><div class="cc-stat"><b>−15%</b><span>repeat tickets</span></div><div class="cc-stat"><b>1,470</b><span>employees modelled in R</span></div></div>
+            <div class="cc-foot"><div class="tags"><span class="tag">Excel</span><span class="tag">ServiceNow</span><span class="tag">SAP</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">R</span></div><span class="cc-open">Open <span aria-hidden="true">→</span></span></div>
+          </div>
+        </a>
+        <a class="capsule-card reveal" href="#/retail" data-tint="retail">
+          <div class="cc-head"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="cc-num">No. 02</span><span class="cc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1.6 9.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8z"/><path d="M8.5 9l2-5M15.5 9l-2-5"/><path d="M9.5 13v3M14.5 13v3"/></svg></span></div>
+          <div class="cc-body">
+            <span class="cc-kicker">Capsule 02 · Store operations at Intermarché</span>
+            <h3 class="cc-title">Retail &amp; grocery operations</h3>
+            <p class="cc-q">What should a section manager order this week, and what do promotions really sell?</p>
+            <div class="cc-stats"><div class="cc-stat"><b>13,020</b><span>SKUs audited</span></div><div class="cc-stat"><b>94→99%</b><span>promo-week shelf availability</span></div><div class="cc-stat"><b>4-step</b><span>order approval</span></div></div>
+            <div class="cc-foot"><div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel Solver</span><span class="tag">Tableau</span><span class="tag">Python</span></div><span class="cc-open">Open <span aria-hidden="true">→</span></span></div>
+          </div>
+        </a>
+        <a class="capsule-card reveal" href="#/airline" data-tint="airline">
+          <div class="cc-head"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="cc-num">No. 03</span><span class="cc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 13.5L4 11l1.2-1.6 7.3.9 4.2-4.4c.9-.9 2.3-1 2.9-.4s.5 2-.4 2.9l-4.4 4.2.9 7.3L14.1 21l-2.5-6.5"/><path d="M7 17.5l-2.5.5.5-2.5"/></svg></span></div>
+          <div class="cc-body">
+            <span class="cc-kicker">Capsule 03 · MS project + real 2024 flights</span>
+            <h3 class="cc-title">Airlines &amp; data platforms</h3>
+            <p class="cc-q">How do you merge two airlines' data, and what does a real merger look like in the numbers?</p>
+            <div class="cc-stats"><div class="cc-stat"><b>1,300</b><span>daily flights</span></div><div class="cc-stat"><b>≤ 30 s</b><span>ops data, was overnight</span></div><div class="cc-stat"><b>324K</b><span>real 2024 flights</span></div></div>
+            <div class="cc-foot"><div class="tags"><span class="tag">Azure Databricks</span><span class="tag">Kafka</span><span class="tag">Microsoft Fabric</span><span class="tag">Python</span><span class="tag">Power BI</span></div><span class="cc-open">Open <span aria-hidden="true">→</span></span></div>
+          </div>
+        </a>
+        <a class="capsule-card reveal" href="#/fleet" data-tint="fleet">
+          <div class="cc-head"><svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg><span class="cc-num">No. 04</span><span class="cc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h3.6l3.4 3.6V16h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span></div>
+          <div class="cc-body">
+            <span class="cc-kicker">Capsule 04 · MS project</span>
+            <h3 class="cc-title">Fleet safety &amp; big data</h3>
+            <p class="cc-q">Seven drivers were flagged. Which ones are really risky, and is it the driver or the truck?</p>
+            <div class="cc-stats"><div class="cc-stat"><b>9,420</b><span>telematics records</span></div><div class="cc-stat"><b>7 → 4</b><span>truly high-risk</span></div><div class="cc-stat"><b>0.90</b><span>AUC</span></div></div>
+            <div class="cc-foot"><div class="tags"><span class="tag">Hadoop</span><span class="tag">Hive</span><span class="tag">Pig</span><span class="tag">Impala</span><span class="tag">Power BI</span><span class="tag">Python</span></div><span class="cc-open">Open <span aria-hidden="true">→</span></span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="toolkit">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Toolkit</span>
+        <h2>My toolkit, <em>with receipts.</em></h2>
+        <p>Every tool links to where I've used it: at work, in class, or in a capsule you can open right now.</p>
+      </div>
+      <div class="legend-states">
+        <span class="tool-state work">At work</span><span class="tool-state class">In class</span><span class="tool-state here">In this portfolio</span><span class="tool-state soon">Being added</span>
+      </div>
+      <div class="tool-groups" id="toolkit-groups"></div>
+      <div class="also">
+        <b>Also in the work on this site</b>
+        <div class="tags">
+          <span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span><span class="tag">SciPy</span><span class="tag">matplotlib</span><span class="tag">ggplot2</span><span class="tag">dplyr</span><span class="tag">survival (R)</span><span class="tag">R Markdown</span><span class="tag">DAX</span><span class="tag">Power Query (M)</span><span class="tag">HiveQL</span><span class="tag">Pig Latin</span><span class="tag">HDFS</span><span class="tag">Delta Lake</span><span class="tag">PowerPoint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <span class="eyebrow">About</span>
+        <h2 style="font-family:var(--display);font-weight:400;font-size:clamp(40px,5.2vw,64px);line-height:1;margin:10px 0 24px">I started in languages. <em class="serif" style="color:var(--accent-ink)">I still translate.</em></h2>
+        <p>My first degree was in <strong>Applied Languages in Business Relations</strong> at the University of Porto. It taught me that many business problems are translation problems: what a manager asks for isn't quite what the data can answer, and what the data says isn't how the team on the floor talks.</p>
+        <p>That's what I did in operations. At <strong>Intermarché</strong> I turned stock and sales data into a list a section manager could act on before ordering. At <strong>ALTEN</strong> I turned thousands of HR tickets a month into a few numbers the team could manage. At <strong>UT Dallas</strong> I'm adding the platform and modelling side: Databricks, Hadoop, machine learning, R.</p>
+        <p>I'm looking for a <strong>data role</strong>, anywhere in the US, where I can work close to the business and help people make better decisions with their data.</p>
+      </div>
+      <div class="reveal">
+        <div class="card-soft">
+          <span class="eyebrow">My path</span>
+          <div class="path">
+            <div class="path-step"><div><b>BA, Applied Languages in Business Relations</b><span>University of Porto · 2024</span></div></div>
+            <div class="path-step"><div><b>Operations Data Analyst, Intermarché</b><span>Portugal · May – Aug 2024</span></div></div>
+            <div class="path-step"><div><b>HR Operations Analyst, ALTEN</b><span>Portugal · Aug 2024 – Jan 2026</span></div></div>
+            <div class="path-step"><div><b>MS Business Analytics &amp; AI, UT Dallas</b><span>Richardson, TX · expected Aug 2027</span></div></div>
+          </div>
+        </div>
+        <div class="card-soft">
+          <span class="eyebrow">Languages</span>
+          <div class="langs" id="langs" style="margin-top:14px">
+            <div class="lang"><span>Portuguese</span><div class="lang-track"><i data-w="100"></i></div><span>Native</span></div>
+            <div class="lang"><span>English</span><div class="lang-track"><i data-w="95"></i></div><span>C2</span></div>
+            <div class="lang"><span>French</span><div class="lang-track"><i data-w="66"></i></div><span>B2</span></div>
+            <div class="lang"><span>Spanish</span><div class="lang-track"><i data-w="66"></i></div><span>B2</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =================================================================== CAPSULE 01 · PEOPLE -->
+<article class="view" data-view="people" data-tint="people">
+  <header class="cap-hero">
+    <svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg>
+    <div class="wrap">
+      <div class="crumbs"><a href="#/capsules">← All capsules</a><span>Capsule 01 of 04</span></div>
+      <div class="cap-hero-grid">
+        <div>
+          <span class="eyebrow">People analytics · HR operations at ALTEN</span>
+          <h1 class="cap-title">Keeping 1,200 employees <em>well served.</em></h1>
+          <p class="cap-lede">At ALTEN I worked in People Services, the team that answers every employee request: contracts, payroll questions, benefits, onboarding. This capsule rebuilds that work on public data, then goes a step further, into who leaves and why.</p>
+        </div>
+        <div class="question-card"><span class="eyebrow">The business question</span><q>Where does the HR desk lose time and trust, and which employees are we most likely to lose?</q></div>
+      </div>
+      <div class="cap-stats">
+        <div class="cap-stat"><b>~3,000</b><span>HR tickets a month at ALTEN</span></div>
+        <div class="cap-stat"><b>−15%</b><span>repeat tickets after the KPI dashboards</span></div>
+        <div class="cap-stat"><b>700</b><span>employees merged after an acquisition</span></div>
+        <div class="cap-stat"><b>1,470</b><span>employees in the attrition model (R)</span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="chapnav" aria-label="Chapters"><div class="wrap">
+    <a href="#/people/problem">The problem</a><a href="#/people/data">The data</a><a href="#/people/desk">1 · Desk health</a><a href="#/people/repeat">2 · Repeat tickets</a><a href="#/people/merge">3 · Acquisition</a><a href="#/people/attrition">4 · Who leaves</a><a href="#/people/insights">Insights</a><a href="#/people/recommend">What I'd do</a><a href="#/people/tools">Tools</a>
+  </div></nav>
+  <div class="wrap">
+    <section class="chapter" id="people-problem">
+      <div class="ch-head"><div><div class="ch-k">The problem</div><h2 class="ch-title">An HR desk that's always busy</h2></div></div>
+      <div class="story-grid">
+        <div class="prose">
+          <p>People Services handled requests for a population of up to <strong>~1,200 employees</strong> that kept changing. About <strong>3,000 tickets a month</strong> came in, each with an SLA clock. Two things hurt the desk: tickets that waited too long, and <strong>tickets that came back</strong> because the first answer didn't solve the problem.</p>
+          <p>Then ALTEN acquired a company of <strong>700 people</strong>, whose HR data had to be brought into ALTEN's standards without breaking payroll.</p>
+          <p>Behind all of it sits the question every HR leader cares about: <strong>who is likely to leave</strong>, and what could we do before they do?</p>
+        </div>
+        <div class="callout"><b>What a good answer looks like</b><br>Not "the desk is busy". A short list: which handoffs to remove, which repeat topics to fix, what the merge must reconcile, and which groups of employees deserve a retention conversation.</div>
+      </div>
+    </section>
+    <section class="chapter" id="people-data">
+      <div class="ch-head"><div><div class="ch-k">The data</div><h2 class="ch-title">Public data with the same shape as the real thing</h2></div></div>
+      <p class="prose">ALTEN's data stays with ALTEN, so I rebuilt the work on public datasets with the same structure. Each panel says what's real and what isn't.</p>
+      <div class="source-cards">
+        <div class="source-card"><span class="badge real">Real</span><h4>ServiceNow ticket log</h4><dl><dt>Source</dt><dd><a href="https://archive.ics.uci.edu/dataset/498" target="_blank" rel="noopener">UCI #498</a>, CC BY 4.0</dd><dt>Size</dt><dd>141,712 events · 24,918 tickets</dd><dt>Why</dt><dd>ServiceNow is the platform I used at ALTEN for tickets, reports and employee documents. This real log has the same mechanics: SLA flags, priorities, reassignments, reopens.</dd></dl></div>
+        <div class="source-card"><span class="badge real">Real</span><h4>IBM HR employee sample</h4><dl><dt>Source</dt><dd><a href="https://github.com/IBM/employee-attrition-aif360" target="_blank" rel="noopener">IBM</a> (a fictional sample built by IBM)</dd><dt>Size</dt><dd>1,470 employees · 35 fields</dd><dt>Use</dt><dd>The "standard" HR schema in chapter 3 and the attrition model in chapter 4.</dd></dl></div>
+        <div class="source-card"><span class="badge synth">Synthetic</span><h4>Acquired company extract</h4><dl><dt>What</dt><dd>700 employees, generated from the IBM distributions</dd><dt>Why</dt><dd>It recreates the problems real HR extracts have: other IDs, mixed date formats, Portuguese contract types, 14 salary payments, duplicates.</dd></dl></div>
+      </div>
+    </section>
+    <section class="chapter" id="people-desk">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 1</div><h2 class="ch-title">SLA &amp; backlog monitor</h2></div>
+              <div class="ch-badges"><span class="badge real">Real data</span><span class="badge plain">Excel → web</span></div>
+            </div>
+            <div class="dash" id="dash-1a">
+              <div class="dash-bar">
+                <div class="dash-title">People desk performance<small id="d1a-sub">Mar 1 – May 31 · tickets opened in the window</small></div>
+                <div class="controls">
+                  <label class="control">Team <select class="select" id="d1a-team"></select></label>
+                </div>
+              </div>
+              <div class="kpis" id="d1a-kpis"></div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title">Tickets opened vs resolved per day</div>
+                  <div class="panel-sub">7-day rolling average. When the orange line runs below blue, backlog builds. The log starts on Feb 29, so early March is a warm-up.</div>
+                  <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Opened</span><span><i class="line" style="background:var(--s2)"></i>Resolved</span></div>
+                  <div class="chart" id="d1a-flow"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Backlog by ticket age, end of each week</div>
+                  <div class="panel-sub">Open tickets, stacked by days since opening. Old tickets are the SLA risk. Builds from zero as the log starts.</div>
+                  <div class="legend" id="d1a-age-legend"></div>
+                  <div class="chart" id="d1a-aging"></div>
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title">SLA met by priority</div>
+                  <div class="panel-sub">Share of tickets resolved within their target.</div>
+                  <div id="d1a-prio"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Every handoff costs SLA</div>
+                  <div class="panel-sub">SLA met by number of times a ticket was reassigned to another person or group.</div>
+                  <div id="d1a-reassign"></div>
+                </div>
+              </div>
+            </div>
+            <div class="findings" id="d1a-findings"></div>
+            <div class="code-tabs" data-tabs>
+              <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">SQL</button><button role="tab" aria-selected="false">Excel</button><button role="tab" aria-selected="false">Python</button><span class="ct-label">How the KPIs are computed</span></div>
+<pre class="code" data-lang="sql">-- Weekly SLA compliance and volume, one row per team and week
+WITH final_state AS (            -- the log has one row per update: keep the last one
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY number ORDER BY sys_mod_count DESC) AS rn
+  FROM incident_event_log
+)
+SELECT assignment_group                              AS team,
+       DATE_TRUNC('week', opened_at)                 AS week,
+       COUNT(*)                                      AS tickets,
+       AVG(CASE WHEN made_sla THEN 1.0 ELSE 0 END)   AS sla_met_rate,
+       PERCENTILE_CONT(0.5) WITHIN GROUP (
+         ORDER BY EXTRACT(EPOCH FROM resolved_at - opened_at) / 3600) AS median_hours
+FROM final_state
+WHERE rn = 1 AND opened_at &gt;= '2016-03-01' AND opened_at &lt; '2016-06-01'
+GROUP BY 1, 2
+ORDER BY 1, 2;
+
+-- Backlog at the end of a given day = opened before, not yet resolved
+SELECT COUNT(*) AS open_tickets
+FROM final_state
+WHERE rn = 1 AND opened_at &lt; :day_end AND COALESCE(resolved_at, closed_at) &gt;= :day_end;</pre>
+<pre class="code" data-lang="excel" hidden>' The original at ALTEN was an Excel workbook, refreshed weekly:
+'
+' 1. Power Query  : import the ticket export, keep the latest state per ticket,
+'                   add Week = Date.StartOfWeek([Opened]), AgeDays = Today - [Opened]
+' 2. PivotTable A : Rows = Week | Columns = Priority | Values = Count of Ticket,
+'                   Average of SLA_Met (shown as %)
+' 3. PivotTable B : Rows = AgeBucket (0-2, 3-7, 8-30, 30+) | Filter = Status <> Resolved
+'                   → the backlog aging view the team lead checked every morning
+' 4. Trend sheet  : 4-week moving average of SLA % with conditional formatting
+'                   (green ≥ target, amber within 5 pts, red below)
+'
+' AgeBucket helper column:
+=IFS([@AgeDays]<=2,"0-2 d",[@AgeDays]<=7,"3-7 d",[@AgeDays]<=30,"8-30 d",TRUE,"30+ d")</pre>
+<pre class="code" data-lang="python" hidden># analysis/people_services.py (excerpt)
+ev = pd.read_csv(SRC, na_values="?")
+t = ev.sort_values("sys_mod_count").groupby("number").tail(1)     # final state per ticket
+t = t[(t.opened_at &gt;= "2016-03-01") &amp; (t.opened_at &lt; "2016-06-01")]
+t["done_at"] = t.resolved_at.fillna(t.closed_at)
+
+for day_end in days + pd.Timedelta(days=1):                      # backlog + aging per day
+    open_now = (t.opened_at &lt; day_end) &amp; (t.done_at &gt;= day_end)
+    age = (day_end - t.opened_at[open_now]).dt.days
+    aging.append([(age &lt;= 2).sum(), age.between(3, 7).sum(),
+                  age.between(8, 30).sum(), (age &gt; 30).sum()])</pre>
+            </div>
+          </section>
+    <section class="chapter" id="people-repeat">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 2</div><h2 class="ch-title">Why tickets come back, and what fixing it is worth</h2></div>
+              <div class="ch-badges"><span class="badge real">Real data</span><span class="badge plain">What-if model</span></div>
+            </div>
+            <p class="prose">A <strong>repeat ticket</strong> is the same person coming back about the same category within 14 days, or rejecting the resolution. Repeats are expensive: the desk does the work twice and the employee loses trust. To act on them, you need to know <strong>where they cluster</strong> and <strong>which fix works</strong>.</p>
+            <div class="dash" id="dash-1b">
+              <div class="dash-bar">
+                <div class="dash-title">Repeat-ticket drivers<small id="d1b-sub"></small></div>
+                <div class="controls"><span class="control" id="d1b-team-note"></span></div>
+              </div>
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Where repeats cluster</div>
+                  <div class="panel-sub">Repeat tickets by category, with the running share of all repeats. Categories are anonymized in the source.</div>
+                  <div id="d1b-pareto"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">What works: a knowledge article</div>
+                  <div class="panel-sub">Repeat rate when the resolver used a knowledge-base article vs. when they didn't.</div>
+                  <div id="d1b-kb"></div>
+                  <div class="callout" id="d1b-kb-note" style="margin-top:12px"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">What-if: publish knowledge articles for the top repeat drivers</div>
+                <div class="panel-sub">Covered categories get the repeat rate seen when an article <em>was</em> used, for the share of tickets where it gets used.</div>
+                <div class="controls" style="margin:10px 0 14px;gap:22px">
+                  <label class="control">Categories covered <input type="range" id="d1b-n" min="0" max="12" value="4"><span class="range-val" id="d1b-n-val">4</span></label>
+                  <label class="control">Article used on <input type="range" id="d1b-adopt" min="20" max="100" step="5" value="60"><span class="range-val" id="d1b-adopt-val">60%</span></label>
+                </div>
+                <div class="kpis k4" id="d1b-sim-kpis" style="margin-bottom:0"></div>
+              </div>
+            </div>
+            <div class="findings" id="d1b-findings"></div>
+            <p class="note">Caveat, stated up front: resolvers chose when to use an article, so this comparison is observational, not a controlled test. In a live rollout I'd confirm the effect with a before/after comparison on the covered categories against the uncovered ones.</p>
+            <div class="code-tabs" data-tabs>
+              <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">SQL</button><button role="tab" aria-selected="false">Python</button><span class="ct-label">Defining a repeat ticket</span></div>
+<pre class="code" data-lang="sql">-- A ticket is a repeat if the same requester opened one in the same category
+-- in the previous 14 days, or rejected the resolution (reopen_count &gt; 0)
+SELECT number, caller_id, category, opened_at,
+       CASE WHEN reopen_count &gt; 0
+              OR opened_at - LAG(opened_at) OVER (
+                   PARTITION BY caller_id, category ORDER BY opened_at) &lt; INTERVAL '14 days'
+            THEN 1 ELSE 0 END AS is_repeat
+FROM tickets;</pre>
+<pre class="code" data-lang="python" hidden># what-if: cover the top-N repeat categories with a knowledge article
+def simulate(cats, n_covered, adoption, kb_rate_team):
+    saved = 0
+    for c in cats[:n_covered]:
+        rate_without = c.rep_nokb / c.n_nokb
+        rate_with = c.rep_kb / c.n_kb if c.n_kb &gt;= 30 else kb_rate_team   # small-sample guard
+        saved += c.n_nokb * adoption * max(0, rate_without - rate_with)
+    return saved / total_repeats          # share of repeat tickets avoided</pre>
+            </div>
+          </section>
+    <section class="chapter" id="people-merge">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 3</div><h2 class="ch-title">Bringing an acquired company's HR data into the standard</h2></div>
+              <div class="ch-badges"><span class="badge real">Standard: real</span><span class="badge synth">Acquired extract: synthetic</span></div>
+            </div>
+            <p class="prose">An acquisition hands you a spreadsheet that <em>looks</em> like your HR data and isn't. Here the acquirer's standard comes from IBM's public HR dataset. The acquired company's 700-person extract is <strong>synthetic</strong>, generated with the kinds of problems real extracts have: another ID scheme, three date formats, Portuguese contract types, salary in 14 instalments, duplicates and broken manager links.</p>
+            <div class="dash" id="dash-1c">
+              <div class="dash-bar">
+                <div class="dash-title">Reconciliation run<small>700 employees · 13 fields mapped to the standard</small></div>
+                <div class="controls"><button class="btn btn-sm" id="d1c-run" type="button">▶ Re-run reconciliation</button></div>
+              </div>
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Record funnel</div>
+                  <div class="panel-sub">How many records survive each check, and why the rest go to a fix-list.</div>
+                  <div class="funnel" id="d1c-funnel"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">What the checks found</div>
+                  <div class="panel-sub">Each issue becomes an owner and a fix before payroll cut-over.</div>
+                  <div class="kpis k3" id="d1c-issues" style="margin:0"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+                  <div><div class="panel-title">Field crosswalk: acquired → standard</div><div class="panel-sub" style="margin:0">Every field gets a status and a rule. "Gap" means someone has to make a policy decision.</div></div>
+                  <div class="chips" id="d1c-filter"></div>
+                </div>
+                <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="d1c-table"><thead><tr><th>Acquired field</th><th>Standard field</th><th>Status</th><th>Rule</th></tr></thead><tbody></tbody></table></div>
+              </div>
+              <div class="callout" id="d1c-pay" style="margin-top:12px"></div>
+            </div>
+          </section>
+        <section class="chapter" id="people-attrition">
+      <div class="ch-head"><div><div class="ch-k">Chapter 4</div><h2 class="ch-title">Who leaves, and why? An attrition study in R</h2></div><div class="ch-badges"><span class="badge real">IBM sample data</span><span class="badge plain">Written in R</span></div></div>
+      <p class="prose">An HR desk answers questions; HR leadership also asks <strong>who is likely to leave, when, and what we could change</strong>. I answered that in R on IBM's public HR sample of 1,470 employees: group comparisons, a logistic regression, retention curves, a decision tree and a what-if. The data is fictional, and every result is an association to test, not a cause.</p>
+      <p style="margin:-4px 0 18px"><a class="btn btn-sm" href="reports/people_attrition.html" target="_blank" rel="noopener">Open the full R report ↗</a></p>
+      <div class="dash">
+        <div class="kpis k4" id="att-kpis"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+              <div><div class="panel-title">Who leaves</div><div class="panel-sub" style="margin:0">Attrition rate by group. The dashed line is the company average.</div></div>
+              <select class="select" id="att-var" aria-label="Group employees by"></select>
+            </div>
+            <div id="att-seg" style="margin-top:12px"></div>
+            <p class="note" id="att-seg-note"></p>
+          </div>
+          <div class="panel">
+            <div class="panel-title">What drives it</div>
+            <div class="panel-sub">Odds ratios from a logistic regression (all else equal), with 95% intervals. Right of 1 = more likely to leave. Log scale.</div>
+            <div class="chart" id="att-or"></div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+              <div><div class="panel-title">When they leave</div><div class="panel-sub" style="margin:0">Share of new hires still here after each year, at this year's exit rates.</div></div>
+              <div class="seg" id="att-surv-by"><button aria-pressed="true" data-k="by_overtime">By overtime</button><button aria-pressed="false" data-k="by_job_level">By job level</button></div>
+            </div>
+            <div class="legend" id="att-surv-legend" style="margin-top:10px"></div>
+            <div class="chart" id="att-surv"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Groups to watch</div>
+            <div class="panel-sub">Segments found by a decision tree, highest attrition first.</div>
+            <div id="att-tree"></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <div class="panel-title">What if we cut overtime?</div>
+          <div class="panel-sub">Expected leavers if a share of overtime workers came off overtime, using the regression. "Targeted" starts with the people whose risk would drop the most.</div>
+          <div class="controls" style="margin:10px 0 14px;gap:18px">
+            <label class="control">Overtime workers moved <input type="range" id="att-share" min="0" max="100" step="5" value="50"><span class="range-val" id="att-share-val">50%</span></label>
+            <div class="seg" id="att-who"><button aria-pressed="true" data-w="targeted">Targeted</button><button aria-pressed="false" data-w="random">Anyone</button></div>
+          </div>
+          <div class="kpis k4" id="att-whatif" style="margin-bottom:0"></div>
+        </div>
+      </div>
+      <div class="findings" id="att-findings"></div>
+      <p class="note" id="att-caveat"></p>
+      <div class="code-tabs" data-tabs>
+        <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">R</button><span class="ct-label">analysis/people_attrition.R (excerpt)</span></div>
+<pre class="code" data-lang="r"># 1. Logistic regression: who is more likely to leave, all else equal
+f_logit   &lt;- reformulate(predictors, response = "left")   # overtime, job level 1, stock options, ...
+fit_train &lt;- glm(f_logit, family = binomial, data = train)  # 70/30 split, set.seed(2026)
+fit_full  &lt;- glm(f_logit, family = binomial, data = model_df)
+or_tab    &lt;- tidy(fit_full, exponentiate = TRUE, conf.int = TRUE)   # odds ratios + 95% CI
+
+# 2. Retention curves. A one-year snapshot, so each person enters at their tenure:
+#    Surv(start = YearsAtCompany, stop = YearsAtCompany + 1, event = left)
+km_ot   &lt;- survfit(Surv(start, stop, event) ~ OverTime, data = surv_df)
+cox_fit &lt;- coxph(as.formula(paste("Surv(start, stop, event) ~", cox_rhs)), data = cox_df)
+
+# 3. Decision tree: readable segments for HR
+tree &lt;- rpart(left ~ ., data = tree_df, method = "anova", control = tree_ctrl)
+
+# 4. What-if: the same people, with overtime switched off
+p_no_ot &lt;- predict(fit_full, newdata = cf, type = "response")</pre>
+      </div>
+    </section>
+    <section class="chapter" id="people-insights">
+      <div class="ch-head"><div><div class="ch-k">Insights</div><h2 class="ch-title">What the data says</h2></div></div>
+      <div class="insights" id="people-insight-cards">
+        <div class="insight"><span class="big">93% → 19%</span><b>Every handoff costs SLA</b><p>Tickets solved by the first resolver met their SLA 93% of the time; after four or more reassignments, 19%.</p></div>
+        <div class="insight"><span class="big">75%</span><b>Repeats are concentrated</b><p>Four categories hold three quarters of all repeat tickets, so a focused fix beats a desk-wide campaign.</p></div>
+        <div class="insight"><span class="big">+16.7%</span><b>The payroll trap in a merge</b><p>Copying the acquired company's monthly salary as-is (12 payments, not Portugal's 14) would overstate monthly pay on every report.</p></div>
+        <!--NEW:people-insight-->
+      </div>
+    </section>
+    <section class="chapter" id="people-recommend">
+      <div class="ch-head"><div><div class="ch-k">What I'd do</div><h2 class="ch-title">Recommendations</h2></div></div>
+      <div class="recos" id="people-recos">
+        <div class="reco"><div><b>Route it right the first time</b><p>Add a short triage step at intake and track the reassignment count weekly. It moves SLA more than asking people to work faster.</p></div></div>
+        <div class="reco"><div><b>Fix the top repeat topics with knowledge articles</b><p>Write articles for the four categories that cause most repeats, then compare covered and uncovered categories before and after.</p></div></div>
+        <div class="reco"><div><b>Treat an acquisition as a data project</b><p>A field crosswalk, a fix-list with owners, and payroll dual-run before cut-over. Policy gaps such as health plans go to a decision, not a spreadsheet.</p></div></div>
+        <!--NEW:people-reco-->
+      </div>
+    </section>
+    <section class="chapter" id="people-tools">
+      <div class="ch-head"><div><div class="ch-k">Tools</div><h2 class="ch-title">What this capsule uses</h2></div></div>
+      <div class="tools-used">
+        <div class="tu"><b>Excel · Power Query · PivotTables</b>The KPI workbooks at ALTEN (chapter 1 shows the setup)</div>
+        <div class="tu"><b>ServiceNow</b>At ALTEN: the HR ticket queue, reports and employee documents. Chapters 1–2 analyze a real ServiceNow log</div>
+        <div class="tu"><b>SAP</b>Employee records at ALTEN (no public demo possible)</div>
+        <div class="tu"><b>SQL</b>KPI and repeat-ticket logic (chapters 1–2)</div>
+        <div class="tu"><b>Python · pandas</b>The data pipelines behind chapters 1–3</div>
+        <div class="tu"><b>R</b>The attrition analysis in chapter 4</div>
+      </div>
+    </section>
+    <nav class="cap-next"><a href="#/capsules"><span>← Back to</span><b>All capsules</b></a><a class="next" href="#/retail"><span>Next capsule →</span><b>Retail &amp; grocery operations</b></a></nav>
+  </div>
+</article>
+
+<!-- =================================================================== CAPSULE 02 · RETAIL -->
+<article class="view" data-view="retail" data-tint="retail">
+  <header class="cap-hero">
+    <svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg>
+    <div class="wrap">
+      <div class="crumbs"><a href="#/capsules">← All capsules</a><span>Capsule 02 of 04</span></div>
+      <div class="cap-hero-grid">
+        <div>
+          <span class="eyebrow">Retail &amp; grocery operations · Store operations at Intermarché</span>
+          <h1 class="cap-title">The right products on the shelf, <em>on order day.</em></h1>
+          <p class="cap-lede">At Intermarché I helped section managers decide what to order. Here I rebuild that work on a real year of grocery data, from a priority board to an order recommender with approvals, and then ask a harder question: what do promotions really sell?</p>
+        </div>
+        <div class="question-card"><span class="eyebrow">The business question</span><q>What should each section order this week, and are our promotions actually growing sales?</q></div>
+      </div>
+      <div class="cap-stats">
+        <div class="cap-stat"><b>13,020</b><span>SKUs in one store's audit</span></div>
+        <div class="cap-stat"><b>94% → 99%</b><span>shelf availability in promotion weeks (simulated)</span></div>
+        <div class="cap-stat"><b>1.4M</b><span>real grocery sales lines from 2017</span></div>
+        <div class="cap-stat" id="retail-stat-4"><b>42%</b><span>of promotion units would have sold anyway</span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="chapnav" aria-label="Chapters"><div class="wrap">
+    <a href="#/retail/problem">The problem</a><a href="#/retail/data">The data</a><a href="#/retail/board">1 · Priority board</a><a href="#/retail/audit">2 · Audit</a><a href="#/retail/order">3 · Order recommender</a><a href="#/retail/promo">4 · What promotions sell</a><a href="#/retail/basket">5 · Sold together</a><a href="#/retail/solver">6 · Excel Solver</a><a href="#/retail/insights">Insights</a><a href="#/retail/recommend">What I'd do</a><a href="#/retail/tools">Tools</a>
+  </div></nav>
+  <div class="wrap">
+    <section class="chapter" id="retail-problem">
+      <div class="ch-head"><div><div class="ch-k">The problem</div><h2 class="ch-title">Ordering from memory</h2></div></div>
+      <div class="story-grid">
+        <div class="prose">
+          <p>In a supermarket, each <strong>section manager</strong> (dairy, drinks, fresh meat…) orders thousands of products, often from memory and last week's sales. Three things lived in different places: <strong>stock risk</strong>, whether the product was <strong>actually on the shelf</strong>, and <strong>which promotions were coming</strong>. And the stock records themselves weren't reliable.</p>
+          <p>I built one view that put the three together, audited the stock data so it could be trusted, and prototyped a recommender that does the order math while <strong>leaving the decision with the managers</strong>.</p>
+        </div>
+        <div class="callout"><b>What a good answer looks like</b><br>On order day, a short list of the products where the usual order will fall short, records that can be trusted, and an order suggestion a manager can follow line by line, change, and sign off.</div>
+      </div>
+    </section>
+    <section class="chapter" id="retail-data">
+      <div class="ch-head"><div><div class="ch-k">The data</div><h2 class="ch-title">A real year of grocery sales</h2></div></div>
+      <div class="source-cards">
+        <div class="source-card"><span class="badge real">Real</span><h4>84.51° The Complete Journey</h4><dl><dt>Source</dt><dd><a href="https://www.8451.com/area51/" target="_blank" rel="noopener">84.51°</a>, via the <a href="https://github.com/bradleyboehmke/completejourney" target="_blank" rel="noopener">completejourney</a> package</dd><dt>Size</dt><dd>2017 · 1.4M sales lines · 92K products · weekly display &amp; mailer promotions</dd></dl></div>
+        <div class="source-card"><span class="badge sim">Simulated</span><h4>Shelf stock, case packs, record errors</h4><dl><dt>Why</dt><dd>No public dataset has them. They're modelled on top of the real sales with a fixed seed, and the logic is shown.</dd></dl></div>
+      </div>
+    </section>
+    <section class="chapter" id="retail-board">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 1</div><h2 class="ch-title">Order-day priority board</h2></div>
+              <div class="ch-badges"><span class="badge real">Sales &amp; promos: real</span><span class="badge sim">Stock: simulated</span></div>
+            </div>
+            <div class="dash" id="dash-2a">
+              <div class="dash-bar">
+                <div class="dash-title">It's order day. Where will the usual order fall short?<small id="d2a-sub"></small></div>
+                <div class="controls">
+                  <label class="control">Section <select class="select" id="d2a-sec"></select></label>
+                  <label class="control">Week <input type="range" id="d2a-week" min="6" max="50" value="25"><span class="range-val" id="d2a-week-val">W25</span></label>
+                </div>
+              </div>
+              <div class="kpis k4" id="d2a-kpis"></div>
+              <div class="tbl-wrap" style="max-height:420px">
+                <table class="tbl" id="d2a-table">
+                  <thead><tr><th>Product</th><th>Priority</th><th class="n">On hand</th><th class="n">Usual order</th><th class="n">Next-week demand</th><th>Cover after usual order</th><th>Mailer</th><th class="n">Promo lift</th><th class="n">Shelf avail., last 4 wks</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title" id="d2a-sku-title">Product detail</div>
+                  <div class="panel-sub" id="d2a-sku-sub">Click a row above. Shaded weeks = product in the store mailer.</div>
+                  <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Units sold (real)</span><span><i class="line" style="background:var(--s2)"></i>Stock on hand (sim.)</span><span><i style="background:var(--critical);border-radius:50%"></i>Ran out</span></div>
+                  <div class="chart" id="d2a-sku-chart"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Promotion performance by section</div>
+                  <div class="panel-sub">Median sales lift in mailer weeks vs. normal weeks, across the section's top products.</div>
+                  <div id="d2a-lift"></div>
+                </div>
+              </div>
+            </div>
+            <div class="findings" id="d2a-findings"></div>
+            <div class="code-tabs" data-tabs>
+              <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">DAX</button><button role="tab" aria-selected="false">Python</button><span class="ct-label">The measures behind the board</span></div>
+<pre class="code" data-lang="dax">-- Power BI measures (model: Sales, Stock, Promo, Product, Calendar)
+Forecast Next Week =
+VAR Base = [Avg Weekly Units (non-promo, 8 wks)]
+VAR PromoNext = CALCULATE ( MAX ( Promo[InMailer] ), DATEADD ( 'Calendar'[Date], 7, DAY ) )
+RETURN IF ( PromoNext = 1, Base * [Promo Lift], Base )
+
+Usual Order = MAX ( 0, 2 * [Units Last Week] - [Stock On Hand] )      -- how the section ordered before
+
+Cover After Usual Order = DIVIDE ( [Stock On Hand] + [Usual Order], [Forecast Next Week] )
+
+Shelf Availability 4W =
+1 - DIVIDE (
+      CALCULATE ( COUNTROWS ( Stock ), Stock[OnHand] &lt;= 0, DATESINPERIOD ( 'Calendar'[Date], MAX ( 'Calendar'[Date] ), -28, DAY ) ),
+      CALCULATE ( COUNTROWS ( Stock ), DATESINPERIOD ( 'Calendar'[Date], MAX ( 'Calendar'[Date] ), -28, DAY ) ) )
+
+Priority =
+SWITCH ( TRUE (),
+    [Cover After Usual Order] &lt; 1, "Order more",
+    [Cover After Usual Order] &lt; 1.25 || ( [Promo In 2 Weeks] = 1 &amp;&amp; [Cover After Usual Order] &lt; 1.6 ), "Watch",
+    "OK" )</pre>
+<pre class="code" data-lang="python" hidden># analysis/store_ops.py (excerpt): promo lift from real mailer weeks
+mail_share = mailer_features / stores_carrying          # per product-week
+is_promo = mail_share &gt;= 0.25                             # in the mailer at ≥25% of stores
+base = units[~is_promo].mean()
+lift = units[is_promo].mean() / base</pre>
+            </div>
+          </section>
+    <section class="chapter" id="retail-audit">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 2</div><h2 class="ch-title">Auditing 13,020 SKUs, then keeping the data clean</h2></div>
+              <div class="ch-badges"><span class="badge real">SKUs &amp; sales: real</span><span class="badge sim">Record errors: simulated</span></div>
+            </div>
+            <p class="prose">A full count fixes the stock records once, and then they start drifting again: scanning errors, unrecorded waste, receiving mistakes. <strong>Structured cycle counts</strong> keep the records right by counting a slice of the store every week, with the high-value items (<strong>class A</strong>) counted most often. The planner below uses the real SKU list and sales of the chain's biggest store.</p>
+            <div class="dash" id="dash-2b">
+              <div class="dash-bar">
+                <div class="dash-title">Store <span id="d2b-store"></span> · wall-to-wall audit, then cycle counts<small>ABC from 2017 sales value · A = top 80% of sales, B = next 15%, C = last 5%</small></div>
+              </div>
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">The audit: SKUs whose record didn't match the shelf</div>
+                  <div class="panel-sub" id="d2b-audit-sub"></div>
+                  <div id="d2b-audit"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">ABC: few SKUs carry most of the sales</div>
+                  <div class="panel-sub">Share of SKUs vs. share of sales value, by class.</div>
+                  <div id="d2b-abc"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">Cycle-count planner</div>
+                <div class="panel-sub">Choose how often each class is counted. The planner shows the weekly workload and how accurate the records stay over the next 52 weeks.</div>
+                <div class="controls" style="margin:10px 0 14px;gap:18px">
+                  <label class="control">A every <select class="select" id="d2b-a"><option value="2">2 weeks</option><option value="4" selected>4 weeks</option><option value="8">8 weeks</option><option value="13">13 weeks</option></select></label>
+                  <label class="control">B every <select class="select" id="d2b-b"><option value="8">8 weeks</option><option value="13" selected>13 weeks</option><option value="26">26 weeks</option></select></label>
+                  <label class="control">C every <select class="select" id="d2b-c"><option value="13">13 weeks</option><option value="26" selected>26 weeks</option><option value="52">52 weeks</option></select></label>
+                  <label class="control">Counts / hour <input type="range" id="d2b-rate" min="30" max="120" step="10" value="60"><span class="range-val" id="d2b-rate-val">60</span></label>
+                </div>
+                <div class="kpis k4" id="d2b-kpis"></div>
+                <div class="legend"><span><i class="line" style="background:var(--s1)"></i>With your cycle-count plan</span><span><i class="line" style="background:var(--s2)"></i>No counts after the audit</span></div>
+                <div class="chart" id="d2b-chart"></div>
+              </div>
+            </div>
+            <div class="findings" id="d2b-findings"></div>
+          </section>
+    <section class="chapter" id="retail-order">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 3</div><h2 class="ch-title">Order recommender, with managers in the loop</h2></div>
+              <div class="ch-badges"><span class="badge real">Demand &amp; promos: real</span><span class="badge sim">Stock &amp; packs: simulated</span></div>
+            </div>
+            <div class="dash" id="dash-2c">
+              <div class="dash-bar">
+                <div class="dash-title">Recommend an order<small>Weekly review, 1-week supplier lead time</small></div>
+                <div class="controls">
+                  <label class="control">Product <select class="select" id="d2c-sku" style="max-width:260px"></select></label>
+                  <label class="control">Week <input type="range" id="d2c-week" min="6" max="50" value="22"><span class="range-val" id="d2c-week-val">W22</span></label>
+                  <label class="control">Service level <select class="select" id="d2c-sl"><option value="1.28">90%</option><option value="1.65" selected>95%</option><option value="2.05">98%</option><option value="2.33">99%</option></select></label>
+                </div>
+              </div>
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">The math, step by step</div>
+                  <div class="panel-sub">Nothing hidden. A manager can follow every number.</div>
+                  <div class="calc" id="d2c-calc"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Demand and what's coming</div>
+                  <div class="panel-sub" id="d2c-chart-sub">Real weekly units. Shaded = in the mailer.</div>
+                  <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Units sold</span><span><i class="line" style="background:var(--s3)"></i>Forecast (no look-ahead)</span></div>
+                  <div class="chart" id="d2c-chart"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">Four-step approval</div>
+                <div class="panel-sub">The system proposes and people decide. Big changes and big orders go up one level, and every step is logged.</div>
+                <div class="flow" id="d2c-flow"></div>
+                <div class="flog" id="d2c-log" aria-live="polite"></div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">Did it help? Same products, same year, two ordering policies</div>
+                <div class="panel-sub">All 140 products replayed week by week on real demand. "Habit" = order up to 2× last week's sales. "Recommended" = the logic above.</div>
+                <div class="kpis k4" id="d2c-sim" style="margin:8px 0 0"></div>
+              </div>
+            </div>
+            <div class="findings" id="d2c-findings"></div>
+            <div class="code-tabs" data-tabs>
+              <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">Python</button><span class="ct-label">Order logic (also runs in this page's JavaScript)</span></div>
+<pre class="code" data-lang="python">def recommend(base, lift, promo_next, promo_after, sd, on_hand, pack, moq_cases=1, z=1.65):
+    f1 = base * (lift if promo_next else 1)          # week the order covers
+    f2 = base * (lift if promo_after else 1)         # + one week of lead time
+    safety = z * sd * (2 ** 0.5)                      # review + lead time = 2 weeks
+    need = max(0, f1 + f2 + safety - on_hand)
+    cases = math.ceil(need / pack)
+    if 0 &lt; cases &lt; moq_cases:
+        cases = moq_cases                             # supplier minimum
+    return cases * pack</pre>
+            </div>
+          </section>
+        <section class="chapter" id="retail-promo">
+      <div class="ch-head"><div><div class="ch-k">Chapter 4</div><h2 class="ch-title">What promotions really sell</h2></div><div class="ch-badges"><span class="badge real">Real sales &amp; mailers</span></div></div>
+      <p class="prose">A promotion's lift looks great on a report. But some of those units come from the product next to it on the shelf (<strong>cannibalization</strong>). Some are bought early and not bought later (<strong>pantry loading</strong>). And many would have sold anyway, now at a discount. I took the lift apart for the 12 biggest food categories.</p>
+      <div class="dash">
+        <div class="kpis" id="rp-kpis"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+              <div><div class="panel-title">From lift to real extra units</div><div class="panel-sub" style="margin:0" id="rp-wf-sub"></div></div>
+              <select class="select" id="rp-cat" aria-label="Category"></select>
+            </div>
+            <div class="chart" id="rp-waterfall" style="margin-top:10px"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">The category, week by week</div>
+            <div class="panel-sub">Units sold vs. the expected baseline. Shaded weeks have at least one product in the mailer.</div>
+            <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Units sold</span><span><i class="line" style="background:var(--axis-ink)"></i>Baseline</span></div>
+            <div class="chart" id="rp-weekly"></div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-title">What each extra unit costs in discount</div>
+            <div class="panel-sub">Discount per truly extra unit, as a share of shelf price. Below the dashed line (~30%, a typical grocery margin) a promotion pays for itself on discount alone.</div>
+            <div id="rp-cost"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Deeper discounts, much bigger lift</div>
+            <div class="panel-sub">Average lift on the promoted product, by discount depth.</div>
+            <div id="rp-depth"></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+            <div><div class="panel-title" id="rp-ex-title">Three real promotions</div><div class="panel-sub" style="margin:0" id="rp-ex-sub"></div></div>
+            <div class="seg" id="rp-ex-pick"></div>
+          </div>
+          <div class="legend" style="margin-top:10px"><span><i class="line" style="background:var(--s1)"></i>This product</span><span><i class="line" style="background:var(--s2)"></i>Rest of its category</span><span><i style="background:var(--accent-wash)"></i>In the mailer</span><span><i style="background:var(--t-people)"></i>Weeks after</span></div>
+          <div class="chart" id="rp-example"></div>
+        </div>
+      </div>
+      <div class="findings" id="rp-findings"></div>
+      <div class="callout tableau-callout"><span><b>Also built in Tableau.</b> The same promotion data as an interactive Tableau Public dashboard: click a category to filter the KPIs, the weekly trend and the discount-vs-lift scatter. <a href="downloads/tableau/promo_performance.csv" download>Data file</a> (16,499 rows).</span><a class="btn btn-primary btn-sm" href="https://public.tableau.com/app/profile/rita.sofia.ferreira.moreira/viz/Promoperformancewhatpromotionsreallydo/Promoperformance" target="_blank" rel="noopener">Open the dashboard ↗</a></div>
+    </section>
+
+    <section class="chapter" id="retail-basket">
+      <div class="ch-head"><div><div class="ch-k">Chapter 5</div><h2 class="ch-title">What sells together</h2></div><div class="ch-badges"><span class="badge real">138,563 real baskets</span></div></div>
+      <p class="prose">A market-basket analysis asks which categories end up in the same trolley more often than chance would predict. <strong>Lift</strong> measures that: a lift of 9.9 means pasta and pasta sauce are bought together almost ten times more often than if they were unrelated. Those pairs are what store layout and cross-promotions should use.</p>
+      <div class="dash">
+        <div class="kpis k4" id="rb-kpis"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-title">The grocery network</div>
+            <div class="panel-sub">Categories bought together (lift above 1.5). Circle size = share of baskets. Hover a category.</div>
+            <div class="legend"><span><i style="background:var(--s1);border-radius:50%"></i>Pantry</span><span><i style="background:var(--s2);border-radius:50%"></i>Fresh</span><span><i style="background:var(--s3);border-radius:50%"></i>Dairy &amp; frozen</span></div>
+            <div class="chart" id="rb-network"></div>
+          </div>
+          <div class="panel">
+            <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
+              <div><div class="panel-title">Strongest pairs</div><div class="panel-sub" style="margin:0">Confidence = share of the first category's baskets that also have the second.</div></div>
+              <div class="seg" id="rb-filter"><button aria-pressed="true" data-f="food">Food</button><button aria-pressed="false" data-f="all">All</button></div>
+            </div>
+            <div class="tbl-wrap" style="margin-top:10px;max-height:380px"><table class="tbl" id="rb-pairs"><thead><tr><th>If the basket has…</th><th>…it often has</th><th class="n">Confidence</th><th class="n">Lift</th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </div>
+      </div>
+      <div class="recos" id="rb-recos" style="margin-top:18px"></div>
+    </section>
+
+    <section class="chapter" id="retail-solver">
+      <div class="ch-head"><div><div class="ch-k">Chapter 6</div><h2 class="ch-title">Planning a promotion order with Excel Solver</h2></div><div class="ch-badges"><span class="badge real">Real prices &amp; demand</span><span class="badge sim">Costs &amp; packs: assumed</span></div></div>
+      <p class="prose">The <strong>July 4th mailer</strong> (week 28) features 12 products. The section has a <strong>$1,200 budget</strong> and <strong>125 ft³</strong> of space, and every supplier has a minimum order. The usual habit is to cut every product's order by the same percentage until it fits. A linear program in <strong>Excel Solver</strong> finds the mix that earns the most within the same limits.</p>
+      <div class="dash">
+        <div class="kpis k4" id="rs-kpis"></div>
+        <div class="tbl-wrap"><table class="tbl" id="rs-table"><thead><tr><th>Product</th><th class="n">Forecast</th><th class="n">Case pack</th><th class="n">Rule of thumb</th><th class="n">Solver</th><th class="n">Margin / unit</th></tr></thead><tbody></tbody></table></div>
+        <div class="controls" style="margin-top:14px">
+          <a class="btn btn-primary btn-sm" href="downloads/promo_order_optimizer.xlsx" download>Download the Excel Solver model</a>
+          <span class="note" style="margin:0">Open it, go to Data › Solver, and press Solve. Instructions are on the first sheet.</span>
+        </div>
+      </div>
+      <div class="code-tabs" data-tabs>
+        <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">The model</button><span class="ct-label">What Solver maximizes</span></div>
+<pre class="code" data-lang="excel">' Decision cells : cases ordered (whole numbers) and units sold, for each of the 12 products
+' Objective      : maximize  SUM( margin × units sold )  −  SUM( leftover cost × units left over )
+' Constraints    : units sold   ≤ forecast demand            (can't sell more than shoppers want)
+'                  units sold   ≤ cases × case pack           (can't sell what wasn't ordered)
+'                  cases        ≥ supplier minimum
+'                  cases          integer
+'                  SUM( cases × case pack × unit cost )  ≤ $1,200   (budget)
+'                  SUM( cases × ft³ per case )           ≤ 125 ft³  (space)
+' Engine         : Simplex LP</pre>
+      </div>
+    </section>
+    <section class="chapter" id="retail-insights">
+      <div class="ch-head"><div><div class="ch-k">Insights</div><h2 class="ch-title">What the data says</h2></div></div>
+      <div class="insights" id="retail-insight-cards">
+        <div class="insight"><span class="big">94.2%</span><b>Promotions are where shelves go empty</b><p>Ordering 2× last week's sales served 97.5% of demand overall, but only 94.2% in mailer weeks. The habit looks backward; a promotion is a jump forward.</p></div>
+        <div class="insight"><span class="big">80%</span><b>A few SKUs carry the store</b><p>37% of SKUs make 80% of sales. Those records drive most ordering decisions, so they deserve the most counting.</p></div>
+        <div class="insight"><span class="big">Same stock</span><b>Timing beats volume</b><p>The recommender reached 99.5% availability with the same average stock (2.9 weeks of cover) as the habit rule.</p></div>
+        <!--NEW:retail-insight-->
+      </div>
+    </section>
+    <section class="chapter" id="retail-recommend">
+      <div class="ch-head"><div><div class="ch-k">What I'd do</div><h2 class="ch-title">Recommendations</h2></div></div>
+      <div class="recos" id="retail-recos">
+        <div class="reco"><div><b>Put the mailer plan into the order screen</b><p>The products that run out are the ones going on promotion. Showing next week's mailer next to the usual order is the cheapest fix.</p></div></div>
+        <div class="reco"><div><b>Count A items monthly, C items twice a year</b><p>A structured cycle-count plan keeps records above 95% for about 4 hours of counting a day.</p></div></div>
+        <div class="reco"><div><b>Let the system propose and managers decide</b><p>Keep the four-step approval: changes come with a reason, big orders go up a level, and every step is logged so the forecast can learn.</p></div></div>
+        <!--NEW:retail-reco-->
+      </div>
+    </section>
+    <section class="chapter" id="retail-tools">
+      <div class="ch-head"><div><div class="ch-k">Tools</div><h2 class="ch-title">What this capsule uses</h2></div></div>
+      <div class="tools-used" id="retail-tools-list">
+        <div class="tu"><b>Power BI · DAX</b>The priority dashboard at Intermarché (chapter 1 shows the measures)</div>
+        <div class="tu"><b>Excel</b>Audit and order sheets at Intermarché</div>
+        <div class="tu"><b>Python · pandas</b>The pipeline and the year-long ordering simulation</div>
+        <div class="tu"><b>SQL-style logic</b>Weekly rollups, promo flags, lift by section</div>
+        <div class="tu"><b>Excel Solver</b>The promotion order model (chapter 6, downloadable)</div>
+        <div class="tu"><b>Tableau</b>The promotions dashboard on <a href="https://public.tableau.com/app/profile/rita.sofia.ferreira.moreira/viz/Promoperformancewhatpromotionsreallydo/Promoperformance" target="_blank" rel="noopener">Tableau Public ↗</a> (chapter 4 data)</div>
+      </div>
+    </section>
+    <nav class="cap-next"><a href="#/people"><span>← Previous capsule</span><b>People analytics</b></a><a class="next" href="#/airline"><span>Next capsule →</span><b>Airlines &amp; data platforms</b></a></nav>
+  </div>
+</article>
+
+<!-- =================================================================== CAPSULE 03 · AIRLINE -->
+<article class="view" data-view="airline" data-tint="airline">
+  <header class="cap-hero">
+    <svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg>
+    <div class="wrap">
+      <div class="crumbs"><a href="#/capsules">← All capsules</a><span>Capsule 03 of 04</span></div>
+      <div class="cap-hero-grid">
+        <div>
+          <span class="eyebrow">Airlines &amp; data platforms · MS project + real flight data</span>
+          <h1 class="cap-title">Two airlines, <em>one data platform.</em></h1>
+          <p class="cap-lede">In class, our team designed the data platform for a fictional airline merger. I wanted to see how those ideas hold up against a real one, so I added a year of real flight data from Alaska Airlines and Hawaiian Airlines, which merged in 2024.</p>
+        </div>
+        <div class="question-card"><span class="eyebrow">The business question</span><q>How do you merge two airlines' data without disrupting the operation, and what does a real merger look like in the numbers?</q></div>
+      </div>
+      <div class="cap-stats" id="airline-stats">
+        <div class="cap-stat"><b>1,300</b><span>daily flights in the case</span></div>
+        <div class="cap-stat"><b>≤ 30 s</b><span>event to controller, was overnight</span></div>
+        <div class="cap-stat"><b>34M</b><span>loyalty accounts to unify</span></div>
+        <div class="cap-stat"><b>324,349</b><span>real 2024 flights analyzed</span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="chapnav" aria-label="Chapters"><div class="wrap">
+    <a href="#/airline/problem">The problem</a><a href="#/airline/arch">1 · Architecture</a><a href="#/airline/steps">2 · Integration</a><a href="#/airline/identity">3 · Identity &amp; access</a><a href="#/airline/platform">4 · Platform choice</a><a href="#/airline/value">5 · Cost &amp; value</a><a href="#/airline/network">6 · Real networks</a><a href="#/airline/ontime">7 · On time?</a><a href="#/airline/replay">8 · Worst-day replay</a><a href="#/airline/chain">9 · Delay chains</a><a href="#/airline/key">10 · Key test</a><a href="#/airline/lakehouse">11 · Lakehouse</a><a href="#/airline/insights">Insights</a><a href="#/airline/recommend">What I'd do</a><a href="#/airline/tools">Tools</a>
+  </div></nav>
+  <div class="wrap">
+    <section class="chapter" id="airline-problem">
+      <div class="ch-head"><div><div class="ch-k">The problem</div><h2 class="ch-title">A merger doubles a messy data estate</h2></div></div>
+      <div class="story-grid">
+        <div class="prose">
+          <p><strong>SkyRoam Aviation</strong> (280 aircraft, 900 daily departures, 25M loyalty members) is acquiring <strong>Merit Air Lines</strong> (120 aircraft, 400 daily departures, 9M members). SkyRoam runs a <strong>30-year-old mainframe</strong> reservation system and a warehouse loaded overnight; Merit is fully in the cloud, on a different one. During storms, controllers fall back on <strong>phone calls and spreadsheets</strong>.</p>
+          <p>As the data platform team for a new Chief Data &amp; AI Officer, we designed the platform and the data organization for the merged airline. It has to hold across three legal phases: <strong>before close</strong>, when antitrust rules allow only aggregates; <strong>Day 1</strong>; and <strong>Years 1–3</strong>, when the systems converge.</p>
+        </div>
+        <div class="source-cards" style="grid-template-columns:1fr">
+          <div class="source-card"><span class="badge plain">Course project</span><h4>BUAN 6335 · group project</h4><dl><dt>What</dt><dd>A 25-slide design and a 15-page paper. Companies and figures are fictional; costs and value are planning estimates.</dd></dl></div>
+          <div class="source-card"><span class="badge real">Real</span><h4>BTS on-time data, 2024</h4><dl><dt>What</dt><dd>Every Alaska and Hawaiian Airlines flight in 2024, from the US Bureau of Transportation Statistics (public domain).</dd></dl></div>
+        </div>
+      </div>
+    </section>
+    <div class="part-label"><span>Part 1 · The design</span><i></i></div>
+    <section class="chapter" id="airline-arch">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 1</div><h2 class="ch-title">From overnight batch to a 30-second view of the operation</h2></div>
+              <div class="ch-badges"><span class="badge plain">Conceptual design</span><span class="badge plain">Click any box</span></div>
+            </div>
+            <div class="dash">
+              <div class="dash-bar">
+                <div class="dash-title">Data flow<small>Toggle between today's estate and the target platform</small></div>
+                <div class="controls"><div class="seg" id="d3-mode"><button aria-pressed="false" data-mode="before">Today: two estates</button><button aria-pressed="true" data-mode="after">Target: one lakehouse</button></div></div>
+              </div>
+              <div class="panel"><div id="d3-arch"></div></div>
+              <div class="grid-2">
+                <div class="panel arch-detail" id="d3-detail"></div>
+                <div class="panel">
+                  <div class="panel-title">Real time where it pays</div>
+                  <div class="panel-sub">Target latency by workload, log scale. Everything else gets the cheapest latency that meets its need.</div>
+                  <div class="legend"><span><i style="background:var(--s1)"></i>Target design</span><span><i style="background:var(--s2)"></i>Today</span></div>
+                  <div class="chart" id="d3-latency"></div>
+                </div>
+              </div>
+            </div>
+            <div class="findings">
+              <div class="finding"><span class="fi">1</span><div><b>Take data as it's emitted; never query the mainframe.</b> SkyRoam's reservation system already publishes booking and ticket changes over IBM MQ. Consuming those messages, plus log-based change data capture, keeps load off a mainframe that is billed by MIPS.</div></div>
+              <div class="finding"><span class="fi">2</span><div><b>The canonical Silver layer absorbs the merger.</b> Both airlines map to one model for customers, flights, aircraft and airports. When a source system is replaced, one adapter changes, not every report built on top.</div></div>
+              <div class="finding"><span class="fi">3</span><div><b>Availability for operations, consistency for money.</b> In a storm a controller needs data that is a few seconds old more than a blank screen (AP). Loyalty balances, refunds and identity merges stay with the system of record (CP).</div></div>
+            </div>
+          </section>
+    <section class="chapter" id="airline-steps">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 2</div><h2 class="ch-title">Separate, connect, conform, converge: no big-bang cutover</h2></div>
+              <div class="ch-badges"><span class="badge plain">Click a step</span></div>
+            </div>
+            <div class="dash">
+              <div class="flow" id="d3-steps"></div>
+              <div class="grid-2">
+                <div class="panel" id="d3-step-detail"></div>
+                <div class="panel">
+                  <div class="panel-title">Before close: the clean room</div>
+                  <div class="panel-sub">Until closing the airlines are competitors. Sharing granular fares, routes or customers could count as "gun-jumping".</div>
+                  <div class="calc">
+                    <div class="calc-row"><span>Row-level data</span><span>stays in each airline's enclave</span></div>
+                    <div class="calc-row"><span>Queries</span><span>counsel-approved templates only</span></div>
+                    <div class="calc-row"><span>Minimum cell size</span><span>≥ 50 passengers or 10 flights</span></div>
+                    <div class="calc-row"><span>Fares</span><span>historic averages, never current</span></div>
+                    <div class="calc-row"><span>Customer overlap</span><span>salted-hash match, counts only</span></div>
+                    <div class="calc-row"><span>People</span><span>named clean team, no pricing or sales</span></div>
+                    <div class="calc-row"><span>Audit</span><span>every query logged, write-once</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    <section class="chapter" id="airline-identity">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 3</div><h2 class="ch-title">34M loyalty accounts: identity, consent and access</h2></div>
+              <div class="ch-badges"><span class="badge plain">Interactive</span></div>
+            </div>
+            <div class="dash">
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Should these two accounts be merged?</div>
+                  <div class="panel-sub">Move the match score. Precision comes first: a false merge could show one traveler's itinerary to another person.</div>
+                  <div class="controls" style="margin:10px 0"><label class="control">Match score <input type="range" id="d3-score" min="50" max="100" value="91"><span class="range-val" id="d3-score-val">0.91</span></label></div>
+                  <div id="d3-score-bar"></div>
+                  <div class="callout" id="d3-score-out" style="margin-top:10px"></div>
+                  <div class="kpis k3" style="margin:12px 0 0">
+                    <div class="kpi"><div class="kpi-lbl">Precision, auto-links</div><div class="kpi-val">≥ 99.5%</div></div>
+                    <div class="kpi"><div class="kpi-lbl">Recall in 6 months</div><div class="kpi-val">≥ 90%</div></div>
+                    <div class="kpi"><div class="kpi-lbl">Residual duplicates</div><div class="kpi-val">&lt; 2%</div></div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Loyalty merge, in three moves</div>
+                  <div class="panel-sub">Each program stays the system of record until the merge. The platform only holds a link table.</div>
+                  <div class="timeline vertical">
+                    <div class="tl"><b>Day 1 · Reciprocal earn and burn</b>Partner-style APIs, like codeshare partners already use. Elite tiers recognized. No database merge.</div>
+                    <div class="tl"><b>Months 3–12 · Members link themselves</b>The app suggests likely matches and the member confirms.</div>
+                    <div class="tl"><b>Year 2 · One program</b>Points convert at a published ratio, status matches to the higher tier, and only high-confidence accounts merge automatically, with notice and a 30-day dispute window.</div>
+                    <div class="tl"><b>Always · Most restrictive consent wins</b>An opt-out on either account carries over. Consent is a row filter on every Customer 360 view.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+                  <div><div class="panel-title">Who sees what: access driven by tags, not table grants</div><div class="panel-sub" style="margin:0">Every asset carries five tags: airline, data class, residency, purpose, retention. Pick a role.</div></div>
+                  <div class="chips" id="d3-roles"></div>
+                </div>
+                <div id="d3-access" style="margin-top:12px"></div>
+              </div>
+            </div>
+          </section>
+    <section class="chapter" id="airline-platform">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 4</div><h2 class="ch-title">Choosing the platform, and testing whether the choice holds</h2></div>
+              <div class="ch-badges"><span class="badge plain">Weighted scoring</span></div>
+            </div>
+            <p class="prose">We scored five options from 1 to 5 against six criteria weighted for this merger. A weighted score is only as good as its weights, so <strong>change them</strong> and see whether the ranking survives.</p>
+            <div class="dash">
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Criteria weights</div>
+                  <div class="panel-sub">Re-normalized to 100% as you move them.</div>
+                  <div id="d3-weights" class="calc"></div>
+                  <button class="btn btn-sm" id="d3-reset" type="button" style="margin-top:10px">Reset to the team's weights</button>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Weighted score</div>
+                  <div class="panel-sub" id="d3-rank-sub"></div>
+                  <div id="d3-rank"></div>
+                  <div class="callout" id="d3-why" style="margin-top:12px"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+    <section class="chapter" id="airline-value">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 5</div><h2 class="ch-title">What it costs, what it's worth, and who runs it</h2></div>
+              <div class="ch-badges"><span class="badge plain">Illustrative estimates</span></div>
+            </div>
+            <div class="dash">
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Annual cost by phase, $M</div>
+                  <div class="panel-sub">Legacy shrinks as the new platform takes over. About $32M invested above today's baseline over four years.</div>
+                  <div class="legend"><span><i style="background:var(--s1)"></i>New platform run-rate</span><span><i style="background:var(--s2)"></i>Legacy estate</span><span><i style="background:var(--s3)"></i>One-time migration &amp; dual-run</span></div>
+                  <div class="chart" id="d3-cost"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Cumulative value vs. cumulative investment, $M</div>
+                  <div class="panel-sub">Value from AI use cases overtakes the investment during Year 2.</div>
+                  <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Cumulative AI value</span><span><i class="line" style="background:var(--s2)"></i>Cumulative investment above baseline</span></div>
+                  <div class="chart" id="d3-payback"></div>
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title">Where the ~$100M a year comes from</div>
+                  <div class="panel-sub">AI use cases at maturity, each with its key assumption.</div>
+                  <div id="d3-usecases"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">The first two data products</div>
+                  <div class="panel-sub">A hub-and-spoke data organization: ~85 people in the central hub, ~60 embedded in business domains. Domains own the products.</div>
+                  <div id="d3-products"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        <div class="part-label"><span>Part 2 · Reality check: Alaska + Hawaiian, 2024</span><i></i></div>
+    <section class="chapter" id="airline-network">
+      <div class="ch-head"><div><div class="ch-k">Chapter 6</div><h2 class="ch-title">Two real networks, barely touching</h2></div><div class="ch-badges"><span class="badge real">Real data · BTS 2024</span></div></div>
+      <p class="prose">Alaska Airlines bought Hawaiian Airlines, and the deal closed on <strong>September 18, 2024</strong>. Every domestic flight both airlines operated that year is public, so I could test the course design on the real thing, starting with the question any merger asks first: <strong>how much do the networks overlap?</strong></p>
+      <div class="dash">
+        <div class="dash-bar">
+          <div class="dash-title">Routes flown in 2024<small id="ar-net-sub"></small></div>
+          <div class="controls"><div class="seg" id="ar-net-mode"><button aria-pressed="true" data-m="both">Both airlines</button><button aria-pressed="false" data-m="AS">Alaska</button><button aria-pressed="false" data-m="HA">Hawaiian</button><button aria-pressed="false" data-m="shared">Shared routes</button></div></div>
+        </div>
+        <div class="kpis k4" id="ar-net-kpis"></div>
+        <div class="panel"><div class="legend" id="ar-net-legend"></div><div class="map" id="ar-map"></div></div>
+      </div>
+      <div class="findings" id="ar-net-findings"></div>
+    </section>
+
+    <section class="chapter" id="airline-ontime">
+      <div class="ch-head"><div><div class="ch-k">Chapter 7</div><h2 class="ch-title">"On time" depends on who's counting</h2></div><div class="ch-badges"><span class="badge real">Real data · BTS 2024</span></div></div>
+      <p class="prose">In the course design we chose one enterprise definition of on-time, A14: arriving within 14 minutes of schedule. Real data shows why that choice matters. <strong>Which airline looks better flips</strong> depending on the definition.</p>
+      <div class="dash">
+        <div class="grid-2" style="margin-top:0">
+          <div class="panel">
+            <div class="panel-title">Share of flights on time, by definition</div>
+            <div class="panel-sub">A0 = at or before schedule · A14 = within 14 min (the US DOT standard) · A30 = within 30 min.</div>
+            <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Alaska</span><span><i class="line" style="background:var(--s2)"></i>Hawaiian</span></div>
+            <div class="chart" id="ar-otp"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Where the delay minutes come from</div>
+            <div class="panel-sub">Share of all delay minutes in 2024, by the cause the airline reported.</div>
+            <div class="legend" id="ar-cause-legend"></div>
+            <div id="ar-causes"></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <div class="panel-title">On-time (A14) by month</div>
+          <div class="panel-sub">The shaded month is when the merger closed. January stands out for Alaska.</div>
+          <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Alaska</span><span><i class="line" style="background:var(--s2)"></i>Hawaiian</span></div>
+          <div class="chart" id="ar-monthly"></div>
+        </div>
+      </div>
+      <div class="findings" id="ar-otp-findings"></div>
+    </section>
+
+    <section class="chapter" id="airline-replay">
+      <div class="ch-head"><div><div class="ch-k">Chapter 8</div><h2 class="ch-title">Replaying the worst day of 2024</h2></div><div class="ch-badges"><span class="badge real">Real flights · real times</span></div></div>
+      <p class="prose">The course design promised controllers a <strong>Live Flight State</strong>: every flight, where it is, and what's going wrong, within 30 seconds. Here is what that screen would have shown on <strong>January 17, 2024</strong>, the most disrupted day of the year for the two airlines combined. Press play.</p>
+      <div class="dash">
+        <div class="dash-bar">
+          <div class="dash-title" id="ar-clock">—<small id="ar-clock-utc"></small></div>
+          <div class="controls">
+            <button class="btn btn-sm btn-primary" id="ar-play" type="button">▶ Play</button>
+            <input type="range" id="ar-time" min="0" max="2000" value="0" aria-label="Time of day" style="width:220px">
+            <div class="seg" id="ar-speed"><button aria-pressed="false" data-s="40">Slow</button><button aria-pressed="true" data-s="110">Normal</button><button aria-pressed="false" data-s="260">Fast</button></div>
+          </div>
+        </div>
+        <div class="kpis" id="ar-live-kpis"></div>
+        <div class="grid-2 replay-grid" style="margin-top:0">
+          <div class="panel"><div class="legend"><span><i style="background:var(--s1);border-radius:50%"></i>In the air, on time</span><span><i style="background:var(--s2);border-radius:50%"></i>In the air, 15+ min late</span><span><i style="background:transparent;border:2px solid var(--critical);border-radius:50%"></i>Cancellations at an airport</span></div><div class="map" id="ar-replay-map"></div></div>
+          <div class="panel">
+            <div class="panel-title">What the controller sees</div>
+            <div class="panel-sub">Latest cancellations, diversions and departures 60+ minutes late.</div>
+            <div class="flog" id="ar-feed" style="margin-top:6px;min-height:260px"></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <div class="panel-title">Departures by hour (Pacific time)</div>
+          <div class="panel-sub">Stacked: on time, 15+ minutes late, cancelled.</div>
+          <div class="legend"><span><i style="background:var(--s1)"></i>On time</span><span><i style="background:var(--s2)"></i>15+ min late</span><span><i style="background:var(--s4)"></i>Cancelled</span></div>
+          <div class="chart" id="ar-hourly"></div>
+        </div>
+      </div>
+      <div class="findings" id="ar-replay-findings"></div>
+    </section>
+
+    <section class="chapter" id="airline-chain">
+      <div class="ch-head"><div><div class="ch-k">Chapter 9</div><h2 class="ch-title">How one late plane spreads its delay</h2></div><div class="ch-badges"><span class="badge real">Real tail numbers</span></div></div>
+      <p class="prose">The biggest single cause of delay minutes is not weather or air traffic. It's <strong>a late aircraft</strong>: the plane arrives late, so its next flight leaves late, and so on through the day. This is why the Live Flight State joins each flight to its aircraft.</p>
+      <div class="dash">
+        <div class="dash-bar">
+          <div class="dash-title">One aircraft's day<small id="ar-chain-sub"></small></div>
+          <div class="controls"><div class="seg" id="ar-chain-pick"></div></div>
+        </div>
+        <div class="kpis k4" id="ar-chain-kpis"></div>
+        <div class="panel"><div class="legend"><span><i style="background:var(--surface-3);border:1px solid var(--axis)"></i>Scheduled</span><span><i style="background:var(--s1)"></i>Flown, on time</span><span><i style="background:var(--s2)"></i>Flown, 15+ min late</span></div><div class="chart" id="ar-gantt"></div></div>
+      </div>
+      <div class="findings" id="ar-chain-findings"></div>
+    </section>
+
+    <section class="chapter" id="airline-key">
+      <div class="ch-head"><div><div class="ch-k">Chapter 10</div><h2 class="ch-title">Testing our flight key on 324,349 real flights</h2></div><div class="ch-badges"><span class="badge real">Real data</span><span class="badge plain">Design check</span></div></div>
+      <p class="prose">Our canonical model identifies a flight leg by <strong>carrier + flight number + scheduled departure date (UTC) + origin</strong>. On paper it looks unique. On real data it isn't, and that's exactly the kind of thing to find before a platform goes live.</p>
+      <div class="dash">
+        <div class="kpis k3" id="ar-key-kpis" style="margin-bottom:12px"></div>
+        <div class="grid-2" style="margin-top:0">
+          <div class="panel">
+            <div class="panel-title">The collision</div>
+            <div class="panel-sub">Two different Hawaiian flights get the same key, because one leaves late in the local evening (already the next day in UTC) and the other leaves the next morning.</div>
+            <div class="tbl-wrap"><table class="tbl" id="ar-collide"><thead><tr><th>Flight</th><th>Local date · time</th><th>Route</th><th>UTC departure</th><th>Key date (UTC)</th></tr></thead><tbody></tbody></table></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">From source row to canonical leg</div>
+            <div class="panel-sub">Pick a real flight to see how the raw BTS fields map to the canonical model.</div>
+            <select class="select" id="ar-ex" style="margin:4px 0 10px"></select>
+            <div class="calc" id="ar-ex-map"></div>
+          </div>
+        </div>
+      </div>
+      <div class="findings" id="ar-key-findings"></div>
+    </section>
+    <section class="chapter" id="airline-lakehouse">
+      <div class="ch-head"><div><div class="ch-k">Chapter 11</div><h2 class="ch-title">Building the lakehouse: bronze, silver, gold</h2></div><div class="ch-badges"><span class="badge real">Real data · BTS 2024</span><span class="badge plain" id="lh-status">Built for Fabric · tested on Spark 3.5</span></div></div>
+      <p class="prose">Part 1 was a design. Here I built one piece of it: the flight-leg pipeline as a <strong>medallion lakehouse</strong> for Microsoft Fabric, written as PySpark notebooks. <strong>Bronze</strong> lands the raw BTS files exactly as published. <strong>Silver</strong> applies the canonical flight leg (UTC times, the key from chapter 10, the A14 flag) and checks its own quality. <strong>Gold</strong> holds the tables a Power BI report reads. Then I compared gold with the numbers on this page, which come from a separate pandas pipeline.</p>
+      <div class="dash">
+        <div class="kpis k4" id="lh-kpis"></div>
+        <div class="medallion" id="lh-flow"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="panel-title">Data-quality checks</div>
+            <div class="panel-sub">Saved to <code>silver_dq_checks</code> on every run. The notebook stops if one fails.</div>
+            <div class="tbl-wrap"><table class="tbl" id="lh-dq"><thead><tr><th>Check</th><th class="n">Result</th><th class="n">Expected</th><th></th></tr></thead><tbody></tbody></table></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Lakehouse vs. this page</div>
+            <div class="panel-sub">Gold figures next to the ones in chapters 6–8, computed separately in pandas.</div>
+            <div class="tbl-wrap"><table class="tbl" id="lh-rec"><thead><tr><th>Figure</th><th class="n">Lakehouse</th><th class="n">This page</th><th></th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </div>
+      </div>
+      <div class="code-tabs" data-tabs>
+        <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">Bronze</button><button role="tab" aria-selected="false">Silver</button><button role="tab" aria-selected="false">Gold</button><button role="tab" aria-selected="false">SQL endpoint</button><span class="ct-label">From the notebooks</span></div>
+<pre class="code" data-lang="python"># 01_bronze_ingest: every 2024 BTS row, all carriers, every value kept as text
+raw = (spark.read
+       .option("header", True)
+       .option("inferSchema", False)       # bronze keeps every value as text
+       .csv(paths))
+bronze = (raw
+          .withColumn("_source_file", F.regexp_extract(F.input_file_name(), r"([^/]+\.csv)$", 1))
+          .withColumn("_ingested_at", F.lit(ingested_at).cast("timestamp")))
+(bronze.write.format("delta").mode("overwrite")
+       .partitionBy("Month")
+       .saveAsTable("bronze_bts_ontime"))</pre>
+<pre class="code" data-lang="python" hidden># 02_silver_flight_leg: local clock at each airport -> UTC, with 2024 daylight-saving rules
+s = s.withColumn("sched_dep_utc",
+                 F.to_utc_timestamp(local_ts(0, F.col("crs_dep_m")), F.col("origin_tz")))
+# the scheduled block time says whether the arrival falls on the next day
+guess = F.to_utc_timestamp(local_ts(0, F.col("crs_arr_m")), F.col("dest_tz"))
+want = plus_min(F.col("sched_dep_utc"), F.col("CRSElapsedTime"))
+s = s.withColumn("arr_day_offset",
+                 F.round((F.unix_timestamp(want) - F.unix_timestamp(guess)) / 86400).cast("int"))
+# the key recommended in chapter 10: the UTC timestamp, not the date
+s = s.withColumn("leg_key", F.concat_ws("|", "Reporting_Airline", "flight_number",
+                 F.date_format("sched_dep_utc", "yyyy-MM-dd'T'HH:mm'Z'"), "Origin"))</pre>
+<pre class="code" data-lang="python" hidden># 03_gold_kpis: one function, used per airline, per month and combined
+def kpis(df, keys):
+    arr = F.col("arrived")
+    return df.groupBy(*keys).agg(
+        F.count("*").alias("flights"),
+        F.sum((F.col("status") == "cancelled").cast("int")).alias("cancelled"),
+        F.avg(F.when(arr, F.col("a14").cast("int"))).alias("a14"),     # on time = 14 min late or less
+        F.avg(F.when(arr, F.col("arr_delay_min"))).alias("avg_arr_delay_min"),
+        F.sum(F.coalesce(F.col("late_aircraft_delay_min"), F.lit(0))).alias("late_aircraft_min"))
+
+save(kpis(legs, ["carrier", "month"]).withColumn("merger_phase", phase), "gold_carrier_month_kpi")</pre>
+<pre class="code" data-lang="sql" hidden>-- SQL analytics endpoint: did reliability change after the merger closed?
+SELECT carrier, merger_phase,
+       SUM(flights) AS flights,
+       CAST(SUM(a14 * arrived) / SUM(arrived) AS DECIMAL(5, 4)) AS a14
+FROM gold_carrier_month_kpi
+WHERE carrier IN ('AS', 'HA')
+GROUP BY carrier, merger_phase
+ORDER BY carrier, MIN(month);</pre>
+      </div>
+      <div class="controls" style="margin-top:14px">
+        <a class="btn btn-primary btn-sm" href="downloads/fabric_airline_lakehouse.zip" download>Download the notebooks</a>
+        <span class="note" style="margin:0">Three Fabric notebooks, the SQL queries and a step-by-step run guide.</span>
+      </div>
+      <div class="findings" id="lh-findings"></div>
+    </section>
+    <section class="chapter" id="airline-insights">
+      <div class="ch-head"><div><div class="ch-k">Insights</div><h2 class="ch-title">What we learned</h2></div></div>
+      <div class="insights" id="airline-insight-cards">
+        <div class="insight"><span class="big">97%</span><b>The platform choice is robust</b><p>Across 2,000 random weightings of the six criteria, Azure + Databricks still ranks first 97% of the time.</p></div>
+        <div class="insight"><span class="big">Year 2</span><b>Value overtakes investment</b><p>Cumulative AI value passes the ~$32M invested above baseline during Year 2 (team estimate).</p></div>
+        <div class="insight"><span class="big">≥ 99.5%</span><b>Precision before recall</b><p>A false identity merge is a privacy incident, so automatic links need near-certainty; the rest goes to stewards or members.</p></div>
+        <div class="insight"><span class="big">12 of 228</span><b>Real merger, little overlap</b><p>Alaska and Hawaiian shared only 12 routes in 2024, all Hawaii to the West Coast. The deal extends the network more than it consolidates it.</p></div>
+        <div class="insight"><span class="big">It flips</span><b>Define on-time once</b><p>Alaska leads under A0; Hawaiian leads by 7 points under A14. The merged airline needs one definition to compare itself.</p></div>
+        <div class="insight"><span class="big">2 keys</span><b>Our key wasn't unique</b><p>Tested on 324,349 real flights, the date-based flight key collided twice. Found on paper, fixed before go-live.</p></div>
+        <div class="insight"><span class="big" id="lh-insight-big">17 of 17</span><b>Two pipelines, one answer</b><p>The lakehouse notebooks and the pandas analysis on this page were written separately. They agree on every figure checked.</p></div>
+        <!--NEW:airline-insight-->
+      </div>
+    </section>
+    <section class="chapter" id="airline-recommend">
+      <div class="ch-head"><div><div class="ch-k">What I'd do</div><h2 class="ch-title">Recommendations</h2></div></div>
+      <div class="recos" id="airline-recos">
+        <div class="reco"><div><b>Sequence by the legal phases, not the technology</b><p>Separate before close, connect on Day 1, conform in Year 1, converge in Years 2–3. No big-bang cutover.</p></div></div>
+        <div class="reco"><div><b>Build the canonical model first</b><p>One definition of a flight leg, a customer and on-time. Every later system change becomes an adapter swap.</p></div></div>
+        <div class="reco"><div><b>Give real time to operations only</b><p>A 30-second Live Flight State for the control center; everything else at the cheapest latency that meets its need.</p></div></div>
+        <div class="reco"><div><b>Key flight legs on the UTC departure timestamp</b><p>Not the date. Keep the local date as an attribute, since airlines and the DOT report by it.</p></div></div>
+        <div class="reco"><div><b>Join every flight to its aircraft's next legs</b><p>Late aircraft is the largest delay cause. Seeing the chain is how the control center gets hours of warning instead of minutes.</p></div></div>
+        <div class="reco"><div><b>Keep bronze raw and let silver test itself</b><p>Land the source untouched, write the quality checks into the pipeline, and reconcile the first gold tables with the reports they replace before anyone switches over.</p></div></div>
+        <!--NEW:airline-reco-->
+      </div>
+    </section>
+    <section class="chapter" id="airline-tools">
+      <div class="ch-head"><div><div class="ch-k">Tools</div><h2 class="ch-title">What this capsule uses</h2></div></div>
+      <div class="tools-used" id="airline-tools-list">
+        <div class="tu"><b>Azure Databricks · Delta Lake</b>The platform we designed (part 1)</div>
+        <div class="tu"><b>Confluent Kafka</b>The streaming backbone in the design</div>
+        <div class="tu"><b>Power BI</b>Certified metrics layer in the design</div>
+        <div class="tu"><b>Python · pandas</b>324,349 real 2024 flights: time zones, overlap, the worst-day replay</div>
+        <div class="tu"><b>PySpark · Delta · Microsoft Fabric</b>The bronze-silver-gold lakehouse notebooks (chapter 11), built for Fabric and tested on Spark 3.5</div>
+        <div class="tu"><b>SQL</b>T-SQL queries for the lakehouse's SQL endpoint (chapter 11)</div>
+        <!--NEW:airline-tools-->
+      </div>
+    </section>
+    <nav class="cap-next"><a href="#/retail"><span>← Previous capsule</span><b>Retail &amp; grocery operations</b></a><a class="next" href="#/fleet"><span>Next capsule →</span><b>Fleet safety &amp; big data</b></a></nav>
+  </div>
+</article>
+
+<!-- =================================================================== CAPSULE 04 · FLEET -->
+<article class="view" data-view="fleet" data-tint="fleet">
+  <header class="cap-hero">
+    <svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg>
+    <div class="wrap">
+      <div class="crumbs"><a href="#/capsules">← All capsules</a><span>Capsule 04 of 04</span></div>
+      <div class="cap-hero-grid">
+        <div>
+          <span class="eyebrow">Fleet safety &amp; big data · MS project (BUAN 6346)</span>
+          <h1 class="cap-title">Seven drivers flagged. <em>Which ones are really risky?</em></h1>
+          <p class="cap-lede">A trucking company's insurer flags drivers with a single rule. We built the Hadoop pipeline and the Power BI dashboard that apply it, then tested every flag in Python before anyone was sent to training.</p>
+        </div>
+        <div class="question-card"><span class="eyebrow">The business question</span><q>Should all seven flagged drivers go to safety training, and is the problem the driver or the truck?</q></div>
+      </div>
+      <div class="cap-stats">
+        <div class="cap-stat"><b>9,420</b><span>telematics and mileage records</span></div>
+        <div class="cap-stat"><b>13.5M</b><span>miles driven, 2009–2013</span></div>
+        <div class="cap-stat"><b>7 → 4</b><span>flagged drivers truly high-risk</span></div>
+        <div class="cap-stat"><b>0.90</b><span>AUC, random forest event model</span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="chapnav" aria-label="Chapters"><div class="wrap">
+    <a href="#/fleet/problem">The problem</a><a href="#/fleet/pipeline">1 · Pipeline &amp; dashboard</a><a href="#/fleet/bayes">2 · Are all 7 risky?</a><a href="#/fleet/truck">3 · Driver or truck?</a><a href="#/fleet/profiles">4 · Profiles &amp; prediction</a><a href="#/fleet/map">5 · Where it happens</a><a href="#/fleet/insights">Insights</a><a href="#/fleet/recommend">What I'd do</a><a href="#/fleet/tools">Tools</a>
+  </div></nav>
+  <div class="wrap">
+    <section class="chapter" id="fleet-problem">
+      <div class="ch-head"><div><div class="ch-k">The problem</div><h2 class="ch-title">A threshold flags, it doesn't prove</h2></div></div>
+      <div class="story-grid">
+        <div class="prose">
+          <p>The insurer's rule is simple: <strong>abnormal driving events per million miles</strong>, with an alert at 7.0. Our pipeline flagged <strong>7 of 25 drivers</strong>. The fleet manager's next question is the real one: do all seven go to safety training? And is the problem the people, or the trucks?</p>
+          <p>A driver with few events can cross 7.0 on one bad stretch. So after the pipeline and the dashboard, we tested every flag with three Python models. Only <strong>4 of the 7</strong> held up, and risk <strong>followed the driver, not the truck</strong>.</p>
+        </div>
+        <div class="source-cards" style="grid-template-columns:1fr">
+          <div class="source-card"><span class="badge real">Course data</span><h4>A fictional trucking company</h4><dl><dt>Data</dt><dd>25 drivers, 20 trucks, 8,000 geolocation pings, 1,350 monthly mileage rows (Jan 2009 – Jun 2013)</dd><dt>Limit</dt><dd>Pings have no timestamps, so an early-warning model on a driver's first months can't be tested. Listed as future work.</dd></dl></div>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="fleet-pipeline">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 1</div><h2 class="ch-title">From raw telematics to a risk dashboard</h2></div>
+              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">Hive · Pig · Impala</span></div>
+            </div>
+            <div class="pipe" id="d4-pipe"></div>
+            <div class="dash" style="margin-top:16px">
+              <div class="dash-bar">
+                <div class="dash-title">Fleet risk<small>The dashboard's views, rebuilt from the project data</small></div>
+              </div>
+              <div class="kpis k4" id="d4-kpis"></div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title">Driver risk ranking</div>
+                  <div class="panel-sub">Events per million miles. The line marks the 7.0 alert threshold. Click a driver.</div>
+                  <div id="d4-rank"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title" id="d4-driver-title">Driver</div>
+                  <div class="panel-sub" id="d4-driver-sub"></div>
+                  <div id="d4-driver"></div>
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="panel-title">Abnormal events by truck make</div>
+                  <div class="panel-sub">Stacked by event type.</div>
+                  <div class="legend" id="d4-ev-legend"></div>
+                  <div class="chart" id="d4-models"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Fleet miles per month</div>
+                  <div class="panel-sub">Jan 2009 – Jun 2013, plus a 12-month forecast (shaded). No significant trend (p = 0.35).</div>
+                  <div class="chart" id="d4-miles"></div>
+                  <div class="panel-title" style="margin-top:10px">Average MPG</div>
+                  <div class="panel-sub">Flat at about 6.6 (p = 0.29). Fuel efficiency doesn't explain risk either.</div>
+                  <div class="chart" id="d4-mpg"></div>
+                </div>
+              </div>
+            </div>
+            <div class="code-tabs" data-tabs>
+              <div class="code-tabs-bar" role="tablist"><button role="tab" aria-selected="true">Pig</button><button role="tab" aria-selected="false">HiveQL / Impala</button><span class="ct-label">The risk factor, computed in Hadoop</span></div>
+<pre class="code" data-lang="sql">-- risk_factor.pig: run with  pig -useHCatalog -f risk_factor.pig
+a = LOAD 'geolocation' USING org.apache.hive.hcatalog.pig.HCatLoader();
+b = FILTER a BY event != 'normal';                          -- abnormal events only
+c = FOREACH b GENERATE driverid, event, (int) '1' AS occurance;
+d = GROUP c BY driverid;
+e = FOREACH d GENERATE group AS driverid, SUM(c.occurance) AS t_occ;
+g = LOAD 'driver_mileage' USING org.apache.hive.hcatalog.pig.HCatLoader();
+h = JOIN e BY driverid, g BY driverid;
+final_data = FOREACH h GENERATE $0 AS driverid, $1 AS events, $3 AS totmiles,
+             (float) $1 / $3 * 1000000 AS riskfactor;      -- events per million miles
+STORE final_data INTO 'riskfactor' USING org.apache.hive.hcatalog.pig.HCatStorer();</pre>
+<pre class="code" data-lang="sql" hidden>-- Written to run unchanged in Hive 1.x and Impala
+SELECT driverid,
+       events,
+       totmiles,
+       ROUND(riskfactor, 2) AS risk_score,
+       CASE WHEN riskfactor &gt;= 7.0 THEN 'ALERT' ELSE 'Below threshold' END AS status
+FROM   riskfactor
+ORDER BY risk_score DESC
+LIMIT 25;
+-- Expected: A97 31.43, A73 24.58, A39 18.53 ... 7 ALERT rows, 18 below</pre>
+            </div>
+          </section>
+    <section class="chapter" id="fleet-bayes">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 2</div><h2 class="ch-title">Are all 7 really risky? A Bayesian second opinion</h2></div>
+              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">Gamma-Poisson</span></div>
+            </div>
+            <p class="prose">Every driver logged about 530,000–550,000 miles, so a score is mostly a count of events. A54 and A20 cross 7.0 with <strong>4 events each</strong>: one fewer and they'd be under the line. The Bayesian model <strong>shrinks small counts toward the fleet average</strong> (6.74) and gives each driver a range and a probability that their true rate is 7.0 or more.</p>
+            <div class="dash">
+              <div class="dash-bar">
+                <div class="dash-title">Raw score vs. Bayesian estimate<small>Each row: raw score (orange), estimate with 90% interval (blue). Sorted by estimate.</small></div>
+                <div class="controls"><div class="seg" id="d4b-filter"><button aria-pressed="true" data-f="flagged">Flagged 7 + next 3</button><button aria-pressed="false" data-f="all">All 25</button></div></div>
+              </div>
+              <div class="panel"><div class="legend"><span><i style="background:var(--s2);border-radius:50%"></i>Raw score</span><span><i style="background:var(--s1);border-radius:50%"></i>Bayesian estimate, 90% interval</span><span><i class="line" style="background:var(--critical)"></i>7.0 threshold</span></div><div class="chart" id="d4b-forest"></div></div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">Probability the true rate is at least 7.0, and what to do</div>
+                <div class="panel-sub">Tiers: Act now at 90% or more · Monitor closely at 40–90% · Standard below 40%.</div>
+                <div class="tbl-wrap"><table class="tbl" id="d4b-table"><thead><tr><th>Driver</th><th class="n">Raw score</th><th class="n">Estimate</th><th>P(true ≥ 7.0)</th><th class="n">Expected events, next 12 mo</th><th>Action</th></tr></thead><tbody></tbody></table></div>
+              </div>
+            </div>
+            <div class="findings" id="d4b-findings"></div>
+          </section>
+    <section class="chapter" id="fleet-truck">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 3</div><h2 class="ch-title">Driver or truck? A natural experiment in the data</h2></div>
+              <div class="ch-badges"><span class="badge real">Course data</span></div>
+            </div>
+            <p class="prose">Five trucks were each driven by two drivers. Same truck, different driver: if the truck were the problem, both drivers would score alike.</p>
+            <div class="dash">
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Same truck, two drivers</div>
+                  <div class="panel-sub">Risk score of each driver. The number on the right is the gap between them.</div>
+                  <div class="legend"><span><i style="background:var(--s2);border-radius:50%"></i>Higher-risk driver</span><span><i style="background:var(--s1);border-radius:50%"></i>Lower-risk driver</span></div>
+                  <div class="chart" id="d4c-dumbbell"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Truck factors don't line up with risk</div>
+                  <div class="panel-sub">Spearman rank correlation with driver risk, across all 25 drivers.</div>
+                  <div class="kpis" id="d4c-stats" style="grid-template-columns:1fr 1fr;margin:8px 0 0"></div>
+                </div>
+              </div>
+            </div>
+            <div class="findings" id="d4c-findings"></div>
+          </section>
+    <section class="chapter" id="fleet-profiles">
+            <div class="ch-head">
+              <div><div class="ch-k">Chapter 4</div><h2 class="ch-title">Who the risky drivers are, and catching events early</h2></div>
+              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">K-Means · random forest</span></div>
+            </div>
+            <div class="dash">
+              <div class="grid-2" style="margin-top:0">
+                <div class="panel">
+                  <div class="panel-title">Three driving profiles (K-Means, k = 3)</div>
+                  <div class="panel-sub">Clustered on each driver's rate of the four event types, shown on two principal components. Hover a dot.</div>
+                  <div class="legend" id="d4d-legend"></div>
+                  <div class="chart" id="d4d-scatter"></div>
+                </div>
+                <div class="panel">
+                  <div class="panel-title">Contractors and new licence holders</div>
+                  <div class="panel-sub">Average risk score by group. Labels show how many drivers are on alert.</div>
+                  <div id="d4d-groups"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="panel-title">Event classifier: if we can only review a few pings, which ones?</div>
+                <div class="panel-sub">Random forest on 8,000 pings (speed, idling, truck, state, licence tenure), cross-validated. Move the slider to choose how many pings to flag.</div>
+                <div class="controls" style="margin:10px 0 12px"><label class="control">Flag the riskiest <input type="range" id="d4d-share" min="1" max="40" value="5"><span class="range-val" id="d4d-share-val">5%</span></label></div>
+                <div class="grid-2" style="margin-top:0">
+                  <div>
+                    <div class="kpis k3" id="d4d-kpis" style="margin-bottom:8px"></div>
+                    <div class="legend"><span><i class="line" style="background:var(--s1)"></i>Random forest</span><span><i class="line" style="background:var(--axis-ink)"></i>Random review</span></div>
+                    <div class="chart" id="d4d-gains"></div>
+                  </div>
+                  <div>
+                    <div class="panel-title" style="font-size:13px">What the forest relies on</div>
+                    <div class="panel-sub">Share of feature importance.</div>
+                    <div id="d4d-imp"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="findings" id="d4d-findings"></div>
+          </section>
+    <section class="chapter" id="fleet-map">
+      <div class="ch-head"><div><div class="ch-k">Chapter 5</div><h2 class="ch-title">Where the risky driving happens</h2></div><div class="ch-badges"><span class="badge real">Course data</span></div></div>
+      <p class="prose">The brief asked for a map, and a map raises a fair question: are some places more dangerous, or do trucks simply drive there more? Raw counts point to the busiest cities. <strong>Rates per 1,000 GPS pings</strong> point to where driving is riskier.</p>
+      <div class="dash">
+        <div class="dash-bar">
+          <div class="dash-title">Abnormal events by city<small>27 cities with GPS pings · circle size follows the selected measure</small></div>
+          <div class="controls"><div class="seg" id="fm-mode"><button aria-pressed="true" data-m="events">Event count</button><button aria-pressed="false" data-m="rate">Rate per 1,000 pings</button></div></div>
+        </div>
+        <div class="grid-2" style="margin-top:0">
+          <div class="panel"><div class="map" id="fm-map"></div></div>
+          <div class="panel"><div class="panel-title" id="fm-rank-title">Top cities</div><div class="panel-sub" id="fm-rank-sub"></div><div id="fm-rank"></div></div>
+        </div>
+      </div>
+      <div class="findings" id="fm-findings"></div>
+    </section>
+    <section class="chapter" id="fleet-insights">
+      <div class="ch-head"><div><div class="ch-k">Insights</div><h2 class="ch-title">What the data says</h2></div></div>
+      <div class="insights">
+        <div class="insight"><span class="big">4 of 7</span><b>Not every flag holds up</b><p>A97, A73, A39 and A50 are at least 93% likely to be truly at or above 7.0. A54 and A20 are close to a coin flip.</p></div>
+        <div class="insight"><span class="big">8.7×</span><b>Same truck, different driver</b><p>On truck T105, one driver scores 8.7 times the other. Truck age and fuel efficiency show no link to risk.</p></div>
+        <div class="insight"><span class="big">51%</span><b>Speed is the early signal</b><p>Flagging the riskiest 5% of pings catches half of all events, 10 times better than random review.</p></div>
+      </div>
+    </section>
+    <section class="chapter" id="fleet-recommend">
+      <div class="ch-head"><div><div class="ch-k">What I'd do</div><h2 class="ch-title">Recommendations</h2></div></div>
+      <div class="recos">
+        <div class="reco"><div><b>Act on four, monitor three</b><p>Targeted coaching for the four drivers the model is sure about; re-score A88, A54 and A20 next quarter instead of acting on one number.</p></div></div>
+        <div class="reco"><div><b>Coach people, don't replace trucks</b><p>Risk follows the driver across vehicles, so maintenance spending won't move the score.</p></div></div>
+        <div class="reco"><div><b>Onboard new licence holders and contractors more closely</b><p>The aggressive profile is drivers with a licence under 2.5 years, and both contractors are on the alert list.</p></div></div>
+        <div class="reco"><div><b>Add a 65 mph alert</b><p>A plain speed rule flags 1.8% of pings and still catches 42% of events: a cheap first line before any model.</p></div></div>
+      </div>
+    </section>
+    <section class="chapter" id="fleet-tools">
+      <div class="ch-head"><div><div class="ch-k">Tools</div><h2 class="ch-title">What this capsule uses</h2></div></div>
+      <div class="tools-used">
+        <div class="tu"><b>Hadoop: HDFS · Hive · Pig · Impala</b>The pipeline (chapter 1 shows the Pig and HiveQL)</div>
+        <div class="tu"><b>Power BI</b>The one-page risk dashboard</div>
+        <div class="tu"><b>Python · scikit-learn · SciPy</b>Bayesian model, K-Means, random forest</div>
+        <div class="tu"><b>SQL</b>Business-question queries in Hive and Impala</div>
+      </div>
+    </section>
+    <nav class="cap-next"><a href="#/airline"><span>← Previous capsule</span><b>Airlines &amp; data platforms</b></a><a class="next" href="#/capsules"><span>Back to →</span><b>All capsules</b></a></nav>
+  </div>
+</article>
+</main>
+
+<footer class="footer" id="contact">
+  <svg class="tile-bg" aria-hidden="true"><rect width="100%" height="100%"/></svg>
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2 style="margin-top:12px">Let's make your data <em>useful.</em></h2>
+    <p>I'm open to data roles anywhere in the US. The fastest way to reach me is email.</p>
+    <div class="foot-row">
+      <a class="btn btn-primary" href="mailto:ritasfmoreira@outlook.com">ritasfmoreira@outlook.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/ritasfmoreira/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="Rita-Moreira-Resume.pdf" download>Download resume</a>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 Rita Moreira · Richardson, TX</span>
+      <span>Data: UCI ML Repository #498 · 84.51° The Complete Journey · IBM HR sample · US BTS on-time data · UT Dallas course files (fictional companies)</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/people_services.js"></script>
+<script src="data/store_ops.js"></script>
+<script src="data/integration.js"></script>
+<script src="data/fleet.js"></script>
+<script src="data/airline_real.js"></script>
+<script src="data/geo.js"></script>
+<script src="data/attrition.js"></script>
+<script>window.PROOF_LINKS = { rreport: "reports/people_attrition.html", solver: "#/retail/solver", tableau: "https://public.tableau.com/app/profile/rita.sofia.ferreira.moreira/viz/Promoperformancewhatpromotionsreallydo/Promoperformance" };</script>
+<script src="data/retail_extra.js"></script>
+<script src="data/fabric_lakehouse.js"></script>
+<!--NEW:data-scripts-->
+<script src="scripts/viz.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/case-people.js"></script>
+<script src="scripts/case-store.js"></script>
+<script src="scripts/case-airline.js"></script>
+<script src="scripts/case-fleet.js"></script>
+<script src="scripts/case-airline-real.js"></script>
+<script src="scripts/case-attrition.js"></script>
+<script src="scripts/case-fleet-map.js"></script>
+<script src="scripts/case-retail-extra.js"></script>
+<script src="scripts/case-airline-fabric.js"></script>
+<!--NEW:case-scripts-->
+</body>
+</html>
