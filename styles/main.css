@@ -231,8 +231,6 @@ em.serif, .serif { font-family: var(--display); font-style: italic; font-weight:
 .proof:hover { background: var(--accent); color: var(--on-accent); }
 .proof.pending { background: var(--surface-2); color: var(--muted); cursor: default; }
 .legend-states { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: -14px 0 26px; font-size: 13px; color: var(--ink-2); align-items: center; }
-.also { margin-top: 26px; background: var(--surface); border-radius: 22px; padding: 18px 20px; box-shadow: var(--shadow); }
-.also b { display: block; margin-bottom: 10px; font-size: 14px; }
 
 /* ---------------------------------------------------- about */
 .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }

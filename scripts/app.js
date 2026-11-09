@@ -94,18 +94,18 @@
   const TOOLS = [
     { group: "Analysis & BI", items: [
       { name: "Excel", sub: "Power Query · PivotTables · Solver", state: ["work", "here"], text: "KPI workbooks for SLA, backlog and repeat tickets at ALTEN; a Solver model for promotion orders in this portfolio.", proofs: [["People · SLA monitor", "#/people/desk"], ["Solver model", null, "solver"]] },
-      { name: "Power BI", sub: "DAX · data modelling", state: ["work", "class"], text: "The order-day priority dashboard at Intermarché, and the fleet risk dashboard in class.", proofs: [["Retail · priority board", "#/retail/board"], ["Fleet · dashboard", "#/fleet/pipeline"]] },
+      { name: "Power BI", sub: "DAX · Power Query · data modelling", state: ["work", "class"], text: "The order-day priority dashboard at Intermarché, and the fleet risk dashboard in class.", proofs: [["Retail · priority board", "#/retail/board"], ["Fleet · dashboard", "#/fleet/pipeline"]] },
       { name: "Tableau", sub: "Tableau Public · calculated fields · dashboard actions", state: ["class", "here"], text: "Practised in class labs; in this portfolio, a published promotions dashboard where clicking a category filters the KPIs, the weekly trend and the scatter.", proofs: [["Tableau Public dashboard", null, "tableau"], ["Retail · promotions", "#/retail/promo"]] },
     ] },
     { group: "Programming & statistics", items: [
       { name: "SQL", sub: "KPIs · window functions · HiveQL", state: ["class", "here"], text: "Business-question queries in Hive and Impala in my Big Data course; SLA and repeat-ticket logic in this portfolio.", proofs: [["People · SLA monitor", "#/people/desk"], ["People · repeats", "#/people/repeat"], ["Fleet · HiveQL", "#/fleet/pipeline"]] },
-      { name: "Python", sub: "pandas · scikit-learn · SciPy", state: ["class", "here"], text: "The fleet models in my Big Data course (Bayesian, K-Means, random forest); the data pipelines and simulations in this portfolio.", proofs: [["Fleet · Bayesian model", "#/fleet/bayes"], ["Fleet · random forest", "#/fleet/profiles"], ["Retail · recommender", "#/retail/order"]] },
-      { name: "R", sub: "dplyr · ggplot2 · survival", state: ["class", "here"], text: "Learned in my MS; in this portfolio, who leaves and why: logistic regression, survival curves and a decision tree.", proofs: [["People · attrition in R", "#/people/attrition", "attrition"], ["R report", null, "rreport"]] },
+      { name: "Python", sub: "pandas · NumPy · scikit-learn · SciPy · matplotlib", state: ["class", "here"], text: "The fleet models in my Big Data course (Bayesian, K-Means, random forest); the data pipelines and simulations in this portfolio.", proofs: [["Fleet · Bayesian model", "#/fleet/bayes"], ["Fleet · random forest", "#/fleet/profiles"], ["Retail · recommender", "#/retail/order"]] },
+      { name: "R", sub: "dplyr · ggplot2 · survival · R Markdown", state: ["class", "here"], text: "Learned in my MS; in this portfolio, who leaves and why: logistic regression, survival curves and a decision tree.", proofs: [["People · attrition in R", "#/people/attrition", "attrition"], ["R report", null, "rreport"]] },
     ] },
     { group: "Data platforms", items: [
       { name: "Hadoop", sub: "HDFS · Hive · Pig · Impala", state: "class", text: "The fleet risk pipeline, from raw CSVs to a risk score per driver.", proofs: [["Fleet · pipeline", "#/fleet/pipeline"]] },
       { name: "Azure Databricks · Kafka", sub: "Delta Lake · Unity Catalog", state: "class", text: "The lakehouse and streaming backbone we designed for the airline merger (a design, not a live deployment).", proofs: [["Airline · architecture", "#/airline/arch"], ["Airline · platform choice", "#/airline/platform"]] },
-      { name: "Microsoft Fabric", sub: "Lakehouse · PySpark notebooks · SQL endpoint", state: "class", text: "Practised in class labs. For the real 2024 flight data, I wrote bronze-silver-gold lakehouse notebooks for Fabric and tested them on Spark 3.5, the engine Fabric runs.", proofs: [["Airline · lakehouse notebooks", "#/airline/lakehouse"]] },
+      { name: "Microsoft Fabric", sub: "Lakehouse · PySpark · Delta Lake · SQL endpoint", state: "class", text: "Practised in class labs. For the real 2024 flight data, I wrote bronze-silver-gold lakehouse notebooks for Fabric and tested them on Spark 3.5, the engine Fabric runs.", proofs: [["Airline · lakehouse notebooks", "#/airline/lakehouse"]] },
     ] },
     { group: "Business systems & workflow", items: [
       { name: "SAP", sub: "HR administration", state: "work", text: "Employee records and HR administration at ALTEN.", proofs: [["At ALTEN (no public demo)", null]] },
@@ -117,7 +117,7 @@
   const LIVE = Object.assign({}, window.PROOF_LINKS || {});
   const STATE = { work: "At work", class: "In class", here: "In this portfolio", soon: "Being added" };
   $("#toolkit-groups").innerHTML = TOOLS.map((g) => `<div class="tool-group"><h3>${g.group}</h3><div class="tool-grid">${g.items.map((t) => `
-    <div class="tool reveal"><div class="tool-top"><div class="tool-name">${t.name}<small>${t.sub}</small></div><span class="tool-states">${[].concat(t.state).map((st) => `<span class="tool-state ${st}">${STATE[st]}</span>`).join("")}</span></div>
+    <div class="tool reveal"><div class="tool-top"><div class="tool-name">${t.name}<small>${t.sub.split(" · ").map((s) => s.replace(/ /g, "\u00a0")).join(" · ")}</small></div><span class="tool-states">${[].concat(t.state).map((st) => `<span class="tool-state ${st}">${STATE[st]}</span>`).join("")}</span></div>
     <p>${t.text}</p><div class="proofs">${t.proofs.map(([label, href, key]) => {
       const live = key && LIVE[key];
       const url = href || (live ? live : null);
