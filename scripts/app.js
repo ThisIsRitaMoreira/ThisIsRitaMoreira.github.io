@@ -32,7 +32,7 @@
   const CAPSULES = ["people", "retail", "airline", "fleet"];
   const TITLES = { home: "Rita Moreira · Business Analyst", people: "People analytics · Rita Moreira", retail: "Retail & grocery operations · Rita Moreira", airline: "Airlines & data platforms · Rita Moreira", fleet: "Fleet safety & big data · Rita Moreira" };
   let current = null;
-  function route() {
+  function route(e, force) {
     const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
     const view = CAPSULES.includes(parts[0]) ? parts[0] : "home";
     const target = view === "home" ? parts[0] : parts[1] ? `${view}-${parts[1]}` : null;
@@ -44,6 +44,8 @@
       if (!target) window.scrollTo({ top: 0, behavior: "instant" });
       observeChapters(view);
       document.dispatchEvent(new CustomEvent("view", { detail: view }));
+    } else if (!target) {
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });   // e.g. the logo clicked from Toolkit: back to the top
     }
     if (target) {
       const el = document.getElementById(target);
@@ -62,7 +64,12 @@
   let firstRoute = true;
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   addEventListener("hashchange", route);
-  window.goto = (hash) => { if (location.hash === hash) route(); else location.hash = hash; };
+  // A link to the address we're already on fires no hashchange (e.g. "Capsules" clicked twice), so route anyway.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#/"]');
+    if (a && a.getAttribute("href") === (location.hash || "#/")) { e.preventDefault(); route(e, true); }
+  });
+  window.goto = (hash) => { if (location.hash === hash) route(null, true); else location.hash = hash; };
 
   /* ---------- chapter nav: highlight the chapter in view ---------- */
   let chapterIO;
