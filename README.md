@@ -1,9 +1,6 @@
 # Rita Moreira · data portfolio
 
-**Not published yet.** To put it online with GitHub Pages later: make the repository public, rename it
-`ThisIsRitaMoreira.github.io`, and the site appears at <https://thisisritamoreira.github.io/>.
-Once the address is known, make the `og:image` tag in `index.html` absolute
-(`https://…/images/og-image.png`) so LinkedIn and other apps show the preview card.
+**Live site:** <https://thisisritamoreira.github.io/>
 
 I'm Rita, a Business Analytics & AI master's student at UT Dallas (graduating August 2027), with
 experience in HR operations at ALTEN and store operations at Intermarché. This portfolio shows the same
@@ -63,7 +60,7 @@ Each script's docstring gives its exact command line. `analysis/*_SCHEMA.md` des
 
 - **Real**: public data, used as published.
 - **Simulated**: modelled on top of real data where no public data exists (shelf stock, case packs, stock-record errors), with fixed random seeds.
-- **Synthetic**: generated to mirror a confidential file (an acquired company's HR extract).
+- **Synthetic**: generated data: a file built to mirror a confidential one (an acquired company's HR extract), and the fictional course data in the fleet capsule.
 
 Employer data from ALTEN and Intermarché is confidential, so those capsules use public data with the same
 shape to show the same work. The airline and fleet capsules use my course projects; company names and
