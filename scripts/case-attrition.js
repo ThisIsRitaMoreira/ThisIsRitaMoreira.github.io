@@ -17,7 +17,7 @@
     { label: "Employees who left", value: F.pct1(O.attrition_rate), sub: `${F.int(O.leavers)} of ${F.int(O.employees)}` },
     { label: "With overtime vs without", value: `${F.pct(O.overtime_rate)} · ${F.pct(O.no_overtime_rate)}`, sub: "attrition rate" },
     { label: "Typical stay before leaving", value: `${SV.overall.median_years} yrs`, sub: `${otYes.median_years} with overtime, ${otNo.median_years} without` },
-    { label: "Model accuracy (test AUC)", value: VAL.auc_test.toFixed(2), sub: `on ${VAL.test_n} held-out employees` },
+    { label: "Ranking quality (test AUC)", value: VAL.auc_test.toFixed(2), sub: `on ${VAL.test_n} held-out employees` },
   ]);
 
   /* who leaves: segment explorer */
@@ -127,7 +127,7 @@
   const top = leaves[0], t20 = VAL.top20;
   const r1 = (g) => g.retention.find((r) => r.year === 1).surv;
   $("#att-findings").innerHTML = [
-    finding(1, `<b>Overtime is the strongest signal.</b> All else equal, people who work overtime are <b>${ot.odds_ratio.toFixed(1)}×</b> as likely to leave (95% CI ${ot.ci_low.toFixed(1)}–${ot.ci_high.toFixed(1)}). Entry-level roles follow at ${lvl.odds_ratio.toFixed(1)}×.`),
+    finding(1, `<b>Overtime is the strongest signal.</b> All else equal, working overtime multiplies the odds of leaving by <b>${ot.odds_ratio.toFixed(1)}</b> (95% CI ${ot.ci_low.toFixed(1)}–${ot.ci_high.toFixed(1)}). Entry-level roles follow, at ${lvl.odds_ratio.toFixed(1)} times the odds.`),
     finding(2, `<b>The first years decide it.</b> At this year's exit rates, ${F.pct(r1(otYes))} of new hires who work overtime are still here after a year, against ${F.pct(r1(otNo))} of those who don't.`),
     finding(3, `<b>A short list, not a blanket policy.</b> The riskiest segment (${top.conditions.join(" and ").toLowerCase()}) loses ${F.pct(top.rate)} of its people. Talking to the riskiest 20% would reach ${F.pct(t20.recall)} of next year's leavers.`),
   ].join("");
@@ -137,5 +137,5 @@
   const ins = document.querySelector("#people-insight-cards");
   if (ins) ins.insertAdjacentHTML("beforeend", `<div class="insight"><span class="big">${ot.odds_ratio.toFixed(1)}×</span><b>Overtime predicts leaving</b><p>In the attrition model, overtime is the strongest driver. Moving the highest-risk half of overtime workers off it would avoid about ${F.int(WI.scenarios.find((s) => s.share === 0.5).reduction_targeted)} exits a year.</p></div>`);
   const rec = document.querySelector("#people-recos");
-  if (rec) A.recommendations.slice(0, 2).forEach((r) => rec.insertAdjacentHTML("beforeend", `<div class="reco"><div><b>${r.title}</b><p>${r.action}${r.measure ? ` Measure: ${r.measure.charAt(0).toLowerCase() + r.measure.slice(1)}` : ""}</p></div></div>`));
+  if (rec) A.recommendations.slice(0, 2).forEach((r) => rec.insertAdjacentHTML("beforeend", `<div class="reco"><div><b>${r.title}</b><p>${r.action}${r.measure ? ` Measure: ${r.measure}` : ""}</p></div></div>`));
 })();

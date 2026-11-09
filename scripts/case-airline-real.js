@@ -249,7 +249,7 @@
       { label: "Legs flown that day", value: String(legs.length) },
       { label: "Legs that inherited the delay", value: String(ch.cascade_legs) },
       { label: "Late-aircraft minutes", value: F.int(ch.late_aircraft_min), sub: "delay passed down the chain" },
-      { label: "First delay", value: `+${legs[0].dep_delay ?? 0} min`, sub: `${legs[0].origin}→${legs[0].dest}` },
+      { label: "First departure", value: ((d) => (d > 0 ? `+${d} min` : d < 0 ? `${Math.abs(d)} min early` : "on time"))(legs[0].dep_delay ?? 0), sub: `${legs[0].origin}→${legs[0].dest}` },
     ]);
     const box = $("#ar-gantt"); box.innerHTML = "";
     const Wd = Math.max(320, box.clientWidth), rowH = 34, top = 6, lw = 120, H = top + legs.length * rowH + 26;

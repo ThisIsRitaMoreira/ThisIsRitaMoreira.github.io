@@ -194,6 +194,6 @@
     renderTable();
   }));
   renderTable();
-  const over = I.pay.median_monthly_12 / I.pay.median_monthly_14 - 1;
+  const over = 14 / 12 - 1;   // 14 payments a year instead of 12: the same factor the insight card uses
   $("#d1c-pay").innerHTML = `<b>The trap a field-to-field copy misses:</b> the acquired file stores annual salary as 12 payments, and Portuguese payroll pays 14 (holiday and Christmas months). Median monthly base is <b>€${F.int(I.pay.median_monthly_12)}</b> in the source but <b>€${F.int(I.pay.median_monthly_14)}</b> under the standard. Copying it straight across would overstate monthly pay by <b>${F.pct1(over)}</b> on every payslip-based report.`;
 })();
