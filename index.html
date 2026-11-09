@@ -8,6 +8,11 @@
 <meta property="og:title" content="Rita Moreira · Business Analyst">
 <meta property="og:description" content="Fluent in four languages, and in data. Four interactive case studies across HR, retail, airlines and trucking.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rita Moreira: Fluent in four languages, and in data. People analytics, retail and grocery, airlines and data platforms, fleet safety and big data.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F3F7FC">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 36'><path d='M0 16a16 16 0 0 1 32 0v16a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4z' fill='%232F5FA7'/><text x='16' y='28' font-family='Georgia,serif' font-size='20' fill='white' text-anchor='middle'>R</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -525,7 +530,6 @@ p_no_ot &lt;- predict(fit_full, newdata = cf, type = "response")</pre>
         <div class="insight"><span class="big">93% → 19%</span><b>Every handoff costs SLA</b><p>Tickets solved by the first resolver met their SLA 93% of the time; after four or more reassignments, 19%.</p></div>
         <div class="insight"><span class="big">75%</span><b>Repeats are concentrated</b><p>Four categories hold three quarters of all repeat tickets, so a focused fix beats a desk-wide campaign.</p></div>
         <div class="insight"><span class="big">+16.7%</span><b>The payroll trap in a merge</b><p>Copying the acquired company's monthly salary as-is (12 payments, not Portugal's 14) would overstate monthly pay on every report.</p></div>
-        <!--NEW:people-insight-->
       </div>
     </section>
     <section class="chapter" id="people-recommend">
@@ -534,7 +538,6 @@ p_no_ot &lt;- predict(fit_full, newdata = cf, type = "response")</pre>
         <div class="reco"><div><b>Route it right the first time</b><p>Add a short triage step at intake and track the reassignment count weekly. It moves SLA more than asking people to work faster.</p></div></div>
         <div class="reco"><div><b>Fix the top repeat topics with knowledge articles</b><p>Write articles for the four categories that cause most repeats, then compare covered and uncovered categories before and after.</p></div></div>
         <div class="reco"><div><b>Treat an acquisition as a data project</b><p>A field crosswalk, a fix-list with owners, and payroll dual-run before cut-over. Policy gaps such as health plans go to a decision, not a spreadsheet.</p></div></div>
-        <!--NEW:people-reco-->
       </div>
     </section>
     <section class="chapter" id="people-tools">
@@ -849,7 +852,6 @@ lift = units[is_promo].mean() / base</pre>
         <div class="insight"><span class="big">94.2%</span><b>Promotions are where shelves go empty</b><p>Ordering 2× last week's sales served 97.5% of demand overall, but only 94.2% in mailer weeks. The habit looks backward; a promotion is a jump forward.</p></div>
         <div class="insight"><span class="big">80%</span><b>A few SKUs carry the store</b><p>37% of SKUs make 80% of sales. Those records drive most ordering decisions, so they deserve the most counting.</p></div>
         <div class="insight"><span class="big">Same stock</span><b>Timing beats volume</b><p>The recommender reached 99.5% availability with the same average stock (2.9 weeks of cover) as the habit rule.</p></div>
-        <!--NEW:retail-insight-->
       </div>
     </section>
     <section class="chapter" id="retail-recommend">
@@ -858,7 +860,6 @@ lift = units[is_promo].mean() / base</pre>
         <div class="reco"><div><b>Put the mailer plan into the order screen</b><p>The products that run out are the ones going on promotion. Showing next week's mailer next to the usual order is the cheapest fix.</p></div></div>
         <div class="reco"><div><b>Count A items monthly, C items twice a year</b><p>A structured cycle-count plan keeps records above 95% for about 4 hours of counting a day.</p></div></div>
         <div class="reco"><div><b>Let the system propose and managers decide</b><p>Keep the four-step approval: changes come with a reason, big orders go up a level, and every step is logged so the forecast can learn.</p></div></div>
-        <!--NEW:retail-reco-->
       </div>
     </section>
     <section class="chapter" id="retail-tools">
@@ -1252,7 +1253,6 @@ ORDER BY carrier, MIN(month);</pre>
         <div class="insight"><span class="big">It flips</span><b>Define on-time once</b><p>Alaska leads under A0; Hawaiian leads by 7 points under A14. The merged airline needs one definition to compare itself.</p></div>
         <div class="insight"><span class="big">2 keys</span><b>Our key wasn't unique</b><p>Tested on 324,349 real flights, the date-based flight key collided twice. Found on paper, fixed before go-live.</p></div>
         <div class="insight"><span class="big" id="lh-insight-big">17 of 17</span><b>Two pipelines, one answer</b><p>The lakehouse notebooks and the pandas analysis on this page were written separately. They agree on every figure checked.</p></div>
-        <!--NEW:airline-insight-->
       </div>
     </section>
     <section class="chapter" id="airline-recommend">
@@ -1264,7 +1264,6 @@ ORDER BY carrier, MIN(month);</pre>
         <div class="reco"><div><b>Key flight legs on the UTC departure timestamp</b><p>Not the date. Keep the local date as an attribute, since airlines and the DOT report by it.</p></div></div>
         <div class="reco"><div><b>Join every flight to its aircraft's next legs</b><p>Late aircraft is the largest delay cause. Seeing the chain is how the control center gets hours of warning instead of minutes.</p></div></div>
         <div class="reco"><div><b>Keep bronze raw and let silver test itself</b><p>Land the source untouched, write the quality checks into the pipeline, and reconcile the first gold tables with the reports they replace before anyone switches over.</p></div></div>
-        <!--NEW:airline-reco-->
       </div>
     </section>
     <section class="chapter" id="airline-tools">
@@ -1276,7 +1275,6 @@ ORDER BY carrier, MIN(month);</pre>
         <div class="tu"><b>Python · pandas</b>324,349 real 2024 flights: time zones, overlap, the worst-day replay</div>
         <div class="tu"><b>PySpark · Delta · Microsoft Fabric</b>The bronze-silver-gold lakehouse notebooks (chapter 11), built for Fabric and tested on Spark 3.5</div>
         <div class="tu"><b>SQL</b>T-SQL queries for the lakehouse's SQL endpoint (chapter 11)</div>
-        <!--NEW:airline-tools-->
       </div>
     </section>
     <nav class="cap-next"><a href="#/retail"><span>← Previous capsule</span><b>Retail &amp; grocery operations</b></a><a class="next" href="#/fleet"><span>Next capsule →</span><b>Fleet safety &amp; big data</b></a></nav>
@@ -1542,7 +1540,6 @@ LIMIT 25;
 <script>window.PROOF_LINKS = { rreport: "reports/people_attrition.html", solver: "#/retail/solver", tableau: "https://public.tableau.com/app/profile/rita.sofia.ferreira.moreira/viz/Promoperformancewhatpromotionsreallydo/Promoperformance" };</script>
 <script src="data/retail_extra.js"></script>
 <script src="data/fabric_lakehouse.js"></script>
-<!--NEW:data-scripts-->
 <script src="scripts/viz.js"></script>
 <script src="scripts/app.js"></script>
 <script src="scripts/case-people.js"></script>
@@ -1554,6 +1551,5 @@ LIMIT 25;
 <script src="scripts/case-fleet-map.js"></script>
 <script src="scripts/case-retail-extra.js"></script>
 <script src="scripts/case-airline-fabric.js"></script>
-<!--NEW:case-scripts-->
 </body>
 </html>

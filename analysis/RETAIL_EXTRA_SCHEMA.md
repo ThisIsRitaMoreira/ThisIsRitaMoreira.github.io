@@ -203,7 +203,7 @@ Merchandising actions from the basket analysis are in `basket.recommendations`.
 
 ## `downloads`
 
-`solver_xlsx` → `downloads/promo_order_optimizer.xlsx` · `tableau_csv` → `downloads/tableau/promo_performance.csv` · `tableau_guide` → `downloads/tableau/TABLEAU_BUILD_GUIDE.md`.
+`solver_xlsx` → `downloads/promo_order_optimizer.xlsx` · `tableau_csv` → `downloads/tableau/promo_performance.csv`.
 
 ---
 

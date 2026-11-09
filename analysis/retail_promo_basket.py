@@ -919,8 +919,7 @@ out = {
     "order_plan": order_plan,
     "insights": insights,
     "recommendations": recommendations,
-    "downloads": {"solver_xlsx": "downloads/promo_order_optimizer.xlsx", "tableau_csv": "downloads/tableau/promo_performance.csv",
-                  "tableau_guide": "downloads/tableau/TABLEAU_BUILD_GUIDE.md"},
+    "downloads": {"solver_xlsx": "downloads/promo_order_optimizer.xlsx", "tableau_csv": "downloads/tableau/promo_performance.csv"},
 }
 os.makedirs(os.path.dirname(OUT_JS), exist_ok=True)
 with open(OUT_JS, "w", encoding="utf-8") as fh:

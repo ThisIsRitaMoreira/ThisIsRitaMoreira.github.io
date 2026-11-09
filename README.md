@@ -2,6 +2,8 @@
 
 **Not published yet.** To put it online with GitHub Pages later: make the repository public, rename it
 `ThisIsRitaMoreira.github.io`, and the site appears at <https://thisisritamoreira.github.io/>.
+Once the address is known, make the `og:image` tag in `index.html` absolute
+(`https://…/images/og-image.png`) so LinkedIn and other apps show the preview card.
 
 I'm Rita, a Business Analytics & AI master's student at UT Dallas (graduating August 2027), with
 experience in HR operations at ALTEN and store operations at Intermarché. This portfolio shows the same
@@ -34,6 +36,7 @@ generate from the public sources.
 | `fabric/` | The airline lakehouse: PySpark notebooks for Microsoft Fabric, SQL queries, run guide, local test tools |
 | `reports/` | The attrition study as an R Markdown report |
 | `downloads/` | Files offered on the site: the Excel Solver model, the Tableau data file, the lakehouse notebooks |
+| `images/og-image.png` | The link-preview card shown when the site's address is shared |
 
 To view it locally:
 
