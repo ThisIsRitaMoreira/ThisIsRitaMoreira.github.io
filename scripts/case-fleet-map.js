@@ -49,7 +49,7 @@
   const zero = cities.filter((c) => c.abnormal === 0).map((c) => c.city);
   $("#fm-findings").innerHTML = [
     `<div class="finding"><span class="fi">1</span><div><b>Counts and rates tell different stories.</b> Stockton and Holtville have the most events, but Reno has the highest rate: ${cities.find((c) => c.city === "Reno").rate.toFixed(1)} per 1,000 pings.</div></div>`,
-    ca ? `<div class="finding"><span class="fi">2</span><div><b>California is where the driving is.</b> It holds ${F.pct(ca.share)} of all events, in line with how much of the fleet's driving happens there, so it isn't riskier per mile.</div></div>` : "",
+    ca ? `<div class="finding"><span class="fi">2</span><div><b>California is where the driving is.</b> It holds ${F.pct(ca.share)} of all events, in line with how much of the fleet's driving happens there, so it isn't riskier for the amount of driving done there.</div></div>` : "",
     zero.length ? `<div class="finding"><span class="fi">3</span><div><b>Some places are clean.</b> ${zero.slice(0, 3).join(", ")}${zero.length > 3 ? " and others" : ""} logged pings but no abnormal events. Place matters less than the driver, which fits chapter 3.</div></div>` : "",
   ].join("");
 })();

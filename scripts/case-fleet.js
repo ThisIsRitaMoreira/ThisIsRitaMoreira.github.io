@@ -108,7 +108,7 @@
       { name: "Forecast", values: hist.map((_, i) => (i === nH - 1 ? hist[i].miles : null)).concat(fc.map((f) => f.miles)), color: "var(--s1)", dash: "4 3" },
     ],
     xLabel: xLab, tipTitle: (i) => labels[i], tipFmt: (v) => F.int(v),
-    extraTip: (i) => (i >= nH ? [{ label: "80% range", value: `${F.int(fc[i - nH].lo)}–${F.int(fc[i - nH].hi)}` }] : []),
+    extraTip: (i) => (i >= nH ? [{ label: "95% range", value: `${F.int(fc[i - nH].lo)}–${F.int(fc[i - nH].hi)}` }] : []),
   });
   V.line($("#d4-mpg"), {
     labels, height: 130, bands: fcBand, yTicks: [5, 6, 7, 8], yFmt: (v) => v.toFixed(0),
@@ -201,7 +201,7 @@
   $("#d4c-stats").innerHTML = kpiHTML([
     { label: "Truck age vs. risk", value: "ρ = " + q2.spearman_truck_age_vs_risk.toFixed(2), sub: `p = ${q2.p_truck_age.toFixed(2)}, no link` },
     { label: "Truck MPG vs. risk", value: "ρ = " + q2.spearman_mpg_vs_risk.toFixed(2), sub: `p = ${q2.p_mpg.toFixed(2)}, no link` },
-    { label: "Licence tenure vs. risk", value: "ρ = " + D.q4.spearman_cdl_years_vs_risk.toFixed(2), sub: "a driver trait: newer licence, more risk" },
+    { label: "Licence tenure vs. risk", value: "ρ = " + D.q4.spearman_cdl_years_vs_risk.toFixed(2), sub: "weak link, not significant (p ≈ 0.3)" },
     { label: "Gap on the same truck", value: `${q2.min_same_truck_ratio}–${q2.max_same_truck_ratio}×`, sub: "between its two drivers" },
   ]);
   $("#d4c-findings").innerHTML = [
