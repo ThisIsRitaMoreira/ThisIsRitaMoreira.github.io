@@ -110,7 +110,7 @@
     { group: "Business systems & workflow", items: [
       { name: "SAP", sub: "HR administration", state: "work", text: "Employee records and HR administration at ALTEN.", proofs: [["At ALTEN (no public demo)", null]] },
       { name: "ServiceNow", sub: "HR tickets · reports · employee documents", state: "work", text: "At ALTEN: answering employee tickets, running reports and managing employee documents. Chapters 1–2 of People analyze a real ServiceNow log.", proofs: [["People · desk health", "#/people/desk"], ["People · repeats", "#/people/repeat"]] },
-      { name: "Git · GitHub", sub: "version control", state: ["class", "here"], text: "Used in class; this portfolio and its lakehouse notebooks are versioned in Git, with the code for every capsule on GitHub.", proofs: [["Repositories (private for now)", null]] },
+      { name: "Git · GitHub", sub: "version control", state: ["class", "here"], text: "Used in class; this portfolio, its data pipelines and the lakehouse notebooks are versioned in Git and kept on GitHub.", proofs: [] },
     ] },
   ];
   // links that become live as their files/sections are added (window.PROOF_LINKS can override)
