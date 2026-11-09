@@ -123,7 +123,7 @@
 
   /* ================================================== Chapter 5 · market basket */
   const B = R.basket;
-  const food = (p) => !/litter|cat food|dog|laundry|bleach|detergent|tissue|towel|soap|hair|diaper|paper|cleaning|trash|bag/i.test(p.a_label + " " + p.b_label);
+  const food = (p) => !/litter|cat food|dog food|pet food|laundry|bleach|detergent|tissue|towel|soap|hair|diaper|paper|cleaning|trash|garbage bag|food bag|storage bag/i.test(p.a_label + " " + p.b_label);
   const topFood = B.pairs.filter(food).sort((a, b) => b.lift - a.lift)[0];
   $("#rb-kpis").innerHTML = kpiHTML([
     { label: "Baskets analyzed", value: F.int(B.n_baskets), sub: "a full year, ~2,500 households" },
