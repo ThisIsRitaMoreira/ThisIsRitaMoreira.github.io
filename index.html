@@ -1309,14 +1309,14 @@ ORDER BY carrier, MIN(month);</pre>
           <p>A driver with few events can cross 7.0 on one bad stretch. So after the pipeline and the dashboard, we tested every flag with three Python models. Only <strong>4 of the 7</strong> held up, and risk <strong>followed the driver, not the truck</strong>.</p>
         </div>
         <div class="source-cards" style="grid-template-columns:1fr">
-          <div class="source-card"><span class="badge real">Course data</span><h4>A fictional trucking company</h4><dl><dt>Data</dt><dd>25 drivers, 20 trucks, 8,000 geolocation pings, 1,350 monthly mileage rows (Jan 2009 – Jun 2013)</dd><dt>Limit</dt><dd>Pings have no timestamps, so an early-warning model on a driver's first months can't be tested. Listed as future work.</dd></dl></div>
+          <div class="source-card"><span class="badge synth">Fictional course data</span><h4>A fictional trucking company</h4><dl><dt>What</dt><dd>Teaching data generated for the BUAN 6346 course, not real drivers or trucks</dd><dt>Data</dt><dd>25 drivers, 20 trucks, 8,000 geolocation pings, 1,350 monthly mileage rows (Jan 2009 – Jun 2013)</dd><dt>Limit</dt><dd>Pings have no timestamps, so an early-warning model on a driver's first months can't be tested. Listed as future work.</dd></dl></div>
         </div>
       </div>
     </section>
     <section class="chapter" id="fleet-pipeline">
             <div class="ch-head">
               <div><div class="ch-k">Chapter 1</div><h2 class="ch-title">From raw telematics to a risk dashboard</h2></div>
-              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">Hive · Pig · Impala</span></div>
+              <div class="ch-badges"><span class="badge synth">Fictional course data</span><span class="badge plain">Hive · Pig · Impala</span></div>
             </div>
             <div class="pipe" id="d4-pipe"></div>
             <div class="dash" style="margin-top:16px">
@@ -1381,7 +1381,7 @@ LIMIT 25;
     <section class="chapter" id="fleet-bayes">
             <div class="ch-head">
               <div><div class="ch-k">Chapter 2</div><h2 class="ch-title">Are all 7 really risky? A Bayesian second opinion</h2></div>
-              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">Gamma-Poisson</span></div>
+              <div class="ch-badges"><span class="badge synth">Fictional course data</span><span class="badge plain">Gamma-Poisson</span></div>
             </div>
             <p class="prose">Every driver logged between about 520,000 and 555,000 miles, so a score is mostly a count of events. A54 and A20 cross 7.0 with <strong>4 events each</strong>: one fewer and they'd be under the line. The Bayesian model <strong>shrinks small counts toward the fleet average</strong> (6.74) and gives each driver a range and a probability that their true rate is 7.0 or more.</p>
             <div class="dash">
@@ -1401,7 +1401,7 @@ LIMIT 25;
     <section class="chapter" id="fleet-truck">
             <div class="ch-head">
               <div><div class="ch-k">Chapter 3</div><h2 class="ch-title">Driver or truck? A natural experiment in the data</h2></div>
-              <div class="ch-badges"><span class="badge real">Course data</span></div>
+              <div class="ch-badges"><span class="badge synth">Fictional course data</span></div>
             </div>
             <p class="prose">Five trucks were each driven by two drivers. Same truck, different driver: if the truck were the problem, both drivers would score alike.</p>
             <div class="dash">
@@ -1424,7 +1424,7 @@ LIMIT 25;
     <section class="chapter" id="fleet-profiles">
             <div class="ch-head">
               <div><div class="ch-k">Chapter 4</div><h2 class="ch-title">Who the risky drivers are, and which events to review first</h2></div>
-              <div class="ch-badges"><span class="badge real">Course data</span><span class="badge plain">K-Means · random forest</span></div>
+              <div class="ch-badges"><span class="badge synth">Fictional course data</span><span class="badge plain">K-Means · random forest</span></div>
             </div>
             <div class="dash">
               <div class="grid-2" style="margin-top:0">
@@ -1461,7 +1461,7 @@ LIMIT 25;
             <div class="findings" id="d4d-findings"></div>
           </section>
     <section class="chapter" id="fleet-map">
-      <div class="ch-head"><div><div class="ch-k">Chapter 5</div><h2 class="ch-title">Where the risky driving happens</h2></div><div class="ch-badges"><span class="badge real">Course data</span></div></div>
+      <div class="ch-head"><div><div class="ch-k">Chapter 5</div><h2 class="ch-title">Where the risky driving happens</h2></div><div class="ch-badges"><span class="badge synth">Fictional course data</span></div></div>
       <p class="prose">The brief asked for a map, and a map raises a fair question: are some places more dangerous, or do trucks simply drive there more? Raw counts point to the busiest cities. <strong>Rates per 1,000 GPS pings</strong> point to where driving is riskier.</p>
       <div class="dash">
         <div class="dash-bar">

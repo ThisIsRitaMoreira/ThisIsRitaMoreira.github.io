@@ -16,7 +16,7 @@ course projects, and each panel says which (real, simulated or synthetic).
 | **People analytics** (ALTEN experience) | HR service-desk SLAs and backlog, repeat tickets, merging an acquired company's HR data, an attrition study in R | UCI ServiceNow incident log (real), IBM HR attrition sample | SQL, Python, R, Excel |
 | **Retail & grocery** (Intermarché experience) | Order-day priority board, stock audits, an order recommender, what promotions really sell, market baskets, an Excel Solver order plan | 84.51° *The Complete Journey* (2,469 households, real) | Power BI/DAX logic, Python, Excel Solver, [Tableau Public dashboard](https://public.tableau.com/app/profile/rita.sofia.ferreira.moreira/viz/Promoperformancewhatpromotionsreallydo/Promoperformance) |
 | **Airlines & data platforms** (BUAN 6335 project) | A data platform for an airline merger, then tested on the real Alaska + Hawaiian merger: networks, on-time definitions, the worst day of 2024, delay chains, a flight-key test, and a bronze-silver-gold lakehouse | BTS on-time data 2024 (324,349 flights, real) | Python, PySpark, SQL, built for Microsoft Fabric |
-| **Fleet safety & big data** (BUAN 6346 project) | A Hadoop risk pipeline, a Bayesian second opinion, driver vs. truck, risk profiles, a risk map | Course project data (driver names removed) | Hadoop (HDFS, Hive, Pig, Impala), Python, Power BI |
+| **Fleet safety & big data** (BUAN 6346 project) | A Hadoop risk pipeline, a Bayesian second opinion, driver vs. truck, risk profiles, a risk map | Fictional course data, generated for the class (driver names removed) | Hadoop (HDFS, Hive, Pig, Impala), Python, Power BI |
 
 ## How it's built
 
@@ -67,7 +67,7 @@ Each script's docstring gives its exact command line. `analysis/*_SCHEMA.md` des
 
 Employer data from ALTEN and Intermarché is confidential, so those capsules use public data with the same
 shape to show the same work. The airline and fleet capsules use my course projects; company names and
-figures in the airline design case are fictional, and driver names are left out of the fleet data.
+figures in the airline design case are fictional, and the fleet data is generated teaching data for a fictional company, with driver names left out.
 
 ## Data sources
 
